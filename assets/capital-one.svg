@@ -53,7 +53,7 @@
 
   <rect x="880" y="640" width="120" height="70" rx="4" class="box"/>
   <text x="904" y="682" class="t">Slack</text>
-  <rect x="1020" y="640" width="120" height="70" rx="4" class="box"/>
+  <rect x="1020" y="640" width="136" height="70" rx="4" class="box"/>
   <text x="1044" y="672" class="t">Email</text>
   <text x="1044" y="694" class="m">idempotent</text>
 
@@ -65,6 +65,6 @@
   <path d="M600 406v80" class="line"/>
   <path d="M780 538h96" class="line"/>
   <path d="M940 586v50" class="line"/>
-  <path d="M1080 586v50" class="line"/>
+  <path d="M1088 586v50" class="line"/>
 
 </svg>

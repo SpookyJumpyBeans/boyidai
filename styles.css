@@ -134,13 +134,16 @@ a.xp-row:hover { background: var(--surface); }
 }
 .case-label, .case-year { font-family: var(--mono); font-size: 12px; color: var(--dim); letter-spacing: .1em; text-transform: uppercase; }
 .case-heading { min-width: 0; }
-.case-main { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-.case-text { padding: 32px 24px; display: flex; align-items: flex-start; }
+.case-main { display: block; }
+.case-text { padding: 56px 56px 60px; }
 .case-kicker { font-family: var(--mono); font-size: 12px; color: var(--muted); letter-spacing: .14em; text-transform: uppercase; margin-bottom: 6px; }
-.case-title { font-size: 44px; font-weight: 500; letter-spacing: -0.035em; line-height: 1.05; margin: 0; }
-.case-lede { color: var(--muted); font-size: 18px; margin: 0; max-width: 520px; }
-.case-figure { margin: 0; border-left: 1px solid var(--line); background: #0d0d0d; display: flex; flex-direction: column; }
-.case-figure img { width: 100%; height: 100%; object-fit: cover; object-position: top left; min-height: 280px; }
+.case-title { font-size: 32px; font-weight: 500; letter-spacing: -0.03em; line-height: 1.1; margin: 0; }
+.case-lede {
+  color: #d6d6d6; font-size: clamp(26px, 3vw, 42px); font-weight: 400; line-height: 1.18;
+  letter-spacing: -0.03em; margin: 0; max-width: 940px;
+}
+.case-figure { margin: 0; border-top: 1px solid var(--line); background: #0d0d0d; display: flex; flex-direction: column; }
+.case-figure img { width: 100%; max-height: 560px; object-fit: contain; background: #0b0b0b; }
 .case-figure figcaption { font-family: var(--mono); font-size: 11px; color: var(--dim); padding: 10px 16px; border-top: 1px solid var(--line); }
 
 .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--line); }
@@ -241,10 +244,9 @@ a.xp-row:hover { background: var(--surface); }
   .case-main { grid-template-columns: 1fr; }
   .case-head { grid-template-columns: auto minmax(0, 1fr); gap: 16px; }
   .case-label, .case-year { display: none; }
-  .case-title { font-size: 30px; }
+  .case-title { font-size: 24px; }
+  .case-text { padding: 28px 20px 32px; }
   .logo.big { width: 60px; height: 60px; border-radius: 13px; }
-  .case-figure { border-left: 0; border-top: 1px solid var(--line); }
-  .case-figure img { min-height: 0; }
   .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .stat:nth-child(2) { border-right: 0; }
   .stat:nth-child(-n + 2) { border-bottom: 1px solid var(--line); }
