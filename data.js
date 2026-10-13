@@ -13,8 +13,8 @@ window.SITE = {
   headline: ["Infrastructure, systems,", "and the layer underneath."],
   intro: "Computer Engineering at UVA. I've built cloud alerting at Capital One, benchmarked frontier models for Oracle's public sector group, and an LLM inference engine and a compiler from scratch.",
   bio: [
-    "I'm a Computer Engineering student at the University of Virginia, minoring in statistics, interested in systems, infrastructure and compilers. I learn a layer by building it: when a framework does something I can't explain, I write my own version and check it against the real one until they agree.",
-    "That habit shows up in how I measure. Results are taken on the machine they ran on, compared within one run, and published whichever way they land.",
+    "I'm a Computer Engineering student at the University of Virginia, minoring in statistics. This summer I built a cloud cost alerting API at Capital One. At TSG I'm Director of Technology for a student consulting group that benchmarked frontier models for Oracle's public sector group and has shipped MVPs for YC-backed founders.",
+    "Outside of work I build systems end to end and benchmark them against the real thing: an LLM inference engine against llama.cpp, a compiler against that engine, a SQL engine against a nested-loop baseline.",
   ],
   // Shown as "name [at] domain [dot] edu" so the address is not trivially scraped.
   email: { user: "fpm9tr", domain: "virginia", tld: "edu" },
@@ -37,13 +37,13 @@ window.SIGNAL = [
 ];
 
 window.EXPERIENCE = [
-  { company: "Capital One", role: "Software Engineering Intern", detail: "Cloud cost alerting API in Go on AWS",
+  { company: "Capital One", logo: { mark: "C1", color: "#d03027" }, role: "Software Engineering Intern", detail: "Cloud cost alerting API in Go on AWS",
     dates: "Jun 2026 to Aug 2026", place: "Richmond, VA", href: "#case-capital-one" },
-  { company: "TSG (Technology Strategy Group)", role: "Director of Technology", detail: "Promoted from Technology Consultant in Aug 2026. Oracle public sector LLM benchmark; MVPs for YC-backed founders",
+  { company: "TSG (Technology Strategy Group)", logo: { mark: "TSG", color: "#2a2a2a" }, role: "Director of Technology", detail: "Promoted from Technology Consultant in Aug 2026. Oracle public sector LLM benchmark; MVPs for YC-backed founders",
     dates: "Aug 2025 to Present", place: "Charlottesville, VA", href: "#case-oracle" },
-  { company: "Polylabs", role: "AI Engineering Intern", detail: "TogetherX, a founder product discovery platform, grown to 30+ revenue-generating clients",
+  { company: "Polylabs", logo: { mark: "PL", color: "#2a2a2a" }, role: "AI Engineering Intern", detail: "TogetherX, a founder product discovery platform, grown to 30+ revenue-generating clients",
     dates: "Aug 2025 to Feb 2026", place: "Palo Alto, CA", href: null },
-  { company: "YellowRed Company LLC", role: "Lead Software Engineer", detail: "i.Lab Startup Accelerator: $18K non-dilutive funding, 400+ monthly active users",
+  { company: "YellowRed Company LLC", logo: { mark: "YR", color: "#2a2a2a" }, role: "Lead Software Engineer", detail: "i.Lab Startup Accelerator: $18K non-dilutive funding, 400+ monthly active users",
     dates: "Jan 2025 to Mar 2025", place: "Charlottesville, VA", href: null },
 ];
 
@@ -52,6 +52,7 @@ window.WORK = [
   {
     id: "capital-one",
     org: "Capital One",
+    logo: { mark: "C1", color: "#d03027" },
     title: "Cloud cost alerting API",
     year: "2026",
     lede: "An alerting service that tells teams when their cloud spend crosses a line, for more than 20,000 internal users.",
@@ -70,6 +71,7 @@ window.WORK = [
   {
     id: "oracle",
     org: "Oracle · via TSG",
+    logo: { icon: "oracle", color: "#c74634" },
     title: "Frontier LLMs for public sector work",
     year: "2026",
     lede: "An independent evaluation, for Oracle's public sector group, of which frontier models fit government and defense workloads.",

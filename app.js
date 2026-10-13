@@ -6,6 +6,14 @@ const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 const ext = (href, label) => `<a class="link-arrow" href="${href}" target="_blank" rel="noopener">${esc(label)} ↗</a>`;
 const pad = (n) => String(n).padStart(2, "0");
+// A company mark: a Simple Icons logo when there is one, else a monogram tile.
+const ICONS = "https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons";
+function logo(l, size = "") {
+  if (!l) return "";
+  if (l.icon) return `<span class="logo ${size}" style="background:${l.color}"><img src="${ICONS}/${l.icon}.svg" alt="" style="filter:invert(1)"></span>`;
+  if (l.src) return `<span class="logo ${size}"><img src="${l.src}" alt=""></span>`;
+  return `<span class="logo ${size} mono" style="background:${l.color}" aria-hidden="true">${esc(l.mark)}</span>`;
+}
 const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 // The address is assembled here and shown spelled out, so it is not sitting
@@ -76,7 +84,7 @@ $("xp").innerHTML = EXPERIENCE.map((x, i) => {
   const tag = x.href ? "a" : "div";
   return `<li><${tag} class="xp-row" ${x.href ? `href="${x.href}"` : ""}>
     <span class="xp-n">${pad(i + 1)}</span>
-    <span class="xp-main"><span class="xp-company">${esc(x.company)}</span>
+    <span class="xp-main"><span class="xp-company">${logo(x.logo)}${esc(x.company)}</span>
       <span class="xp-role">${esc(x.role)}</span><span class="xp-detail">${esc(x.detail)}</span></span>
     <span class="xp-dates">${esc(x.dates)}</span>
     <span class="xp-place">${esc(x.place)}</span>
@@ -91,7 +99,7 @@ function caseStudy(c, i, kicker) {
     <div class="case-head"><span>${pad(i + 1)} / Case study</span><span>${esc(c.year)}</span></div>
     <div class="case-main">
       <div class="case-text">
-        <div class="case-kicker">${esc(kicker)}</div>
+        <div class="case-kicker">${logo(c.logo, "small")}${esc(kicker)}</div>
         <h3 class="case-title">${esc(c.title)}</h3>
         <p class="case-lede">${esc(c.lede)}</p>
       </div>
@@ -167,7 +175,7 @@ $("prs").innerHTML = CONTRIBUTIONS.map((c, i) => `
 
 $("about-body").innerHTML = `
   <div class="reveal">
-    <p class="about-lead">Computer Engineering at UVA. I learn a layer by building it.</p>
+    <p class="about-lead">Computer Engineering at UVA, minor in statistics.</p>
     ${SITE.bio.map((b) => `<p>${esc(b)}</p>`).join("")}
   </div>
   <div class="facts reveal">
