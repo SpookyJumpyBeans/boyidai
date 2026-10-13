@@ -59,7 +59,7 @@ window.WORK = [
     logo: { src: "assets/logo-capital-one.svg", bg: "#fff", fit: "wide" },
     title: "Cloud Cost Alerting API",
     year: "2026",
-    lede: "An alerting service that tells teams when their cloud spend crosses a line, for more than 20,000 internal users.",
+    lede: "An alerting service that tells teams when their cloud spend crosses a threshold, for more than 20,000 internal users.",
     stats: [
       { value: "20,000+", label: "Internal users" },
       { value: "8", label: "Endpoints across 2 services, one dispatcher" },
