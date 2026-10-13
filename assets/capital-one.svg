@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-label="Architecture of the cost alerting API, drawn from the public résumé description: an Angular modal and EventBridge schedules reach a Go event dispatcher on AWS Lambda behind a shared ALB, which stores rules in Postgres through RDS Proxy and hands breaches to a pool of 10 Go workers that send Slack and email alerts.">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 10 5 0 10z" fill="#5c5c5c"/>
+    </marker>
+    <style>
+      .box { fill: #111; stroke: #2a2a2a; }
+      .hot { fill: #111; stroke: #7fd7c4; }
+      .t { font: 500 23px Inter, system-ui, sans-serif; fill: #ededed; }
+      .m { font: 400 15.5px "JetBrains Mono", Consolas, monospace; fill: #8b8b8b; letter-spacing: .04em; }
+      .k { font: 400 14px "JetBrains Mono", Consolas, monospace; fill: #5c5c5c; letter-spacing: .14em; }
+      .line { stroke: #5c5c5c; stroke-width: 1.5; fill: none; marker-end: url(#a); }
+    </style>
+  </defs>
+  <rect width="1200" height="760" fill="#0b0b0b"/>
+  <text x="60" y="70" class="k">COST ALERTING API · SHAPE OF THE SYSTEM</text>
+
+  <!-- sources -->
+  <rect x="60" y="130" width="260" height="96" rx="4" class="box"/>
+  <text x="84" y="170" class="t">Spend dashboards</text>
+  <text x="84" y="198" class="m">Angular modal</text>
+
+  <rect x="60" y="300" width="260" height="96" rx="4" class="box"/>
+  <text x="84" y="340" class="t">EventBridge</text>
+  <text x="84" y="368" class="m">daily · weekly · monthly</text>
+
+  <!-- entry -->
+  <rect x="420" y="130" width="200" height="96" rx="4" class="box"/>
+  <text x="444" y="170" class="t">Shared ALB</text>
+  <text x="444" y="198" class="m">HTTPS</text>
+
+  <!-- dispatcher -->
+  <rect x="420" y="290" width="360" height="116" rx="4" class="hot"/>
+  <text x="444" y="330" class="t">Event dispatcher</text>
+  <text x="444" y="358" class="m">Go on AWS Lambda</text>
+  <text x="444" y="382" class="m">8 endpoints · 2 services</text>
+
+  <!-- storage -->
+  <rect x="880" y="290" width="260" height="116" rx="4" class="box"/>
+  <text x="904" y="330" class="t">Postgres</text>
+  <text x="904" y="358" class="m">via RDS Proxy</text>
+  <text x="904" y="382" class="m">rules · thresholds</text>
+
+  <!-- evaluation -->
+  <rect x="420" y="490" width="360" height="96" rx="4" class="box"/>
+  <text x="444" y="530" class="t">Threshold evaluation</text>
+  <text x="444" y="558" class="m">fixed $ · period-over-period %</text>
+
+  <!-- workers -->
+  <rect x="880" y="490" width="260" height="96" rx="4" class="box"/>
+  <text x="904" y="530" class="t">Worker pool × 10</text>
+  <text x="904" y="558" class="m">Go goroutines</text>
+
+  <rect x="880" y="640" width="120" height="70" rx="4" class="box"/>
+  <text x="904" y="682" class="t">Slack</text>
+  <rect x="1020" y="640" width="120" height="70" rx="4" class="box"/>
+  <text x="1044" y="672" class="t">Email</text>
+  <text x="1044" y="694" class="m">idempotent</text>
+
+  <!-- wiring -->
+  <path d="M320 178h96" class="line"/>
+  <path d="M520 226v60" class="line"/>
+  <path d="M320 348h96" class="line"/>
+  <path d="M780 348h96" class="line"/>
+  <path d="M600 406v80" class="line"/>
+  <path d="M780 538h96" class="line"/>
+  <path d="M940 586v50" class="line"/>
+  <path d="M1080 586v50" class="line"/>
+
+</svg>

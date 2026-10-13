@@ -66,16 +66,24 @@ h1 .soft { color: var(--dim); }
 .button:hover { opacity: .85; }
 .link-arrow { font-family: var(--mono); font-size: 13px; color: var(--muted); transition: color .15s; }
 .link-arrow:hover { color: var(--text); }
-#hero-links { display: flex; gap: 20px; }
+.email .link-arrow { letter-spacing: .02em; }
 
 .now { border: 1px solid var(--line-2); background: var(--surface); font-size: 12px; }
 .now-head { display: flex; justify-content: space-between; padding: 12px 16px; color: var(--dim); border-bottom: 1px solid var(--line); letter-spacing: .1em; text-transform: uppercase; }
-.now-body { padding: 20px 16px 22px; }
-.now-label { color: var(--accent); letter-spacing: .1em; text-transform: uppercase; }
-.now-title { font-family: var(--sans); font-size: 26px; letter-spacing: -0.02em; margin: 6px 0 4px; }
+.now-body {
+  display: grid; grid-template-columns: 32px 1fr; gap: 8px; width: 100%; min-height: 150px;
+  padding: 20px 16px 22px; text-align: left; font: inherit; color: inherit;
+  background: none; border: 0; cursor: pointer;
+}
+.now-body > span:last-child { display: flex; flex-direction: column; }
+.now-num { color: var(--accent); }
+.now-label { color: var(--dim); letter-spacing: .1em; text-transform: uppercase; }
+.now-title { font-family: var(--sans); font-size: 28px; letter-spacing: -0.02em; margin: 6px 0 4px; }
 .now-line { color: var(--muted); font-size: 12px; line-height: 1.6; }
+.now-mini { display: block; height: 2px; background: var(--line); margin-top: 12px; max-width: 200px; }
+.now-mini i { display: block; height: 100%; background: var(--muted); }
 .now-bar { height: 2px; background: var(--line); }
-.now-bar i { display: block; height: 100%; background: var(--accent); }
+.now-bar i { display: block; height: 100%; width: 0; background: var(--accent); }
 
 /* -- sections ------------------------------------------------------------- */
 
@@ -89,6 +97,23 @@ h1 .soft { color: var(--dim); }
 .label { color: var(--muted); }
 .section-title { font-size: clamp(32px, 4.4vw, 52px); font-weight: 500; letter-spacing: -0.035em; line-height: 1.05; margin: 20px 0 56px; }
 
+/* -- experience ----------------------------------------------------------- */
+
+.xp { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.xp li { border-bottom: 1px solid var(--line); }
+.xp-row {
+  display: grid; grid-template-columns: 48px minmax(0, 1fr) 180px 160px 24px;
+  gap: 16px; align-items: baseline; padding: 22px 4px; transition: background .15s;
+}
+a.xp-row:hover { background: var(--surface); }
+.xp-n, .xp-dates, .xp-place, .xp-arrow { font-family: var(--mono); font-size: 12px; color: var(--dim); }
+.xp-dates { color: var(--muted); }
+.xp-main { display: flex; flex-direction: column; gap: 2px; }
+.xp-company { font-size: 22px; font-weight: 500; letter-spacing: -0.02em; }
+.xp-role { color: var(--text); font-size: 15px; }
+.xp-detail { color: var(--muted); font-size: 14px; }
+.sub-title { font-size: 24px; font-weight: 500; letter-spacing: -0.02em; margin: 72px 0 24px; }
+
 /* -- case studies --------------------------------------------------------- */
 
 .case { border: 1px solid var(--line); background: var(--surface); margin-bottom: 32px; }
@@ -99,8 +124,8 @@ h1 .soft { color: var(--dim); }
 }
 .case-main { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
 .case-text { padding: 32px 24px; }
-.case-title { font-size: 40px; font-weight: 500; letter-spacing: -0.035em; margin: 0 0 4px; }
-.case-kicker { font-family: var(--mono); font-size: 12px; color: var(--accent); letter-spacing: .08em; text-transform: uppercase; }
+.case-kicker { font-family: var(--mono); font-size: 12px; color: var(--accent); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 10px; }
+.case-title { font-size: 40px; font-weight: 500; letter-spacing: -0.035em; line-height: 1.08; margin: 0; }
 .case-lede { color: var(--muted); margin: 16px 0 0; max-width: 520px; }
 .case-figure { margin: 0; border-left: 1px solid var(--line); background: #0d0d0d; display: flex; flex-direction: column; }
 .case-figure img { width: 100%; height: 100%; object-fit: cover; object-position: top left; min-height: 280px; }
@@ -212,6 +237,9 @@ h1 .soft { color: var(--dim); }
   .filters { grid-template-columns: 1fr 1fr; }
   .grid { grid-template-columns: 1fr; }
   .prs a { grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; }
+  .xp-row { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .xp-n, .xp-arrow { display: none; }
+  .xp-company { font-size: 20px; }
   .prs .n, .prs .date, .prs .arrow { display: none; }
   .prs .title { grid-column: 1 / -1; }
   .about { grid-template-columns: 1fr; gap: 40px; }

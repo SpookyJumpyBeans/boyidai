@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-label="Shape of the benchmark: 24 tasks across 8 government and defense domains, half reasoning and half agentic, run on three frontier models and scored on accuracy, reasoning, execution and latency.">
+  <defs>
+    <style>
+      .t { font: 500 23px Inter, system-ui, sans-serif; fill: #ededed; }
+      .big { font: 500 64px Inter, system-ui, sans-serif; fill: #ededed; letter-spacing: -2px; }
+      .m { font: 400 15.5px "JetBrains Mono", Consolas, monospace; fill: #8b8b8b; letter-spacing: .04em; }
+      .k { font: 400 14px "JetBrains Mono", Consolas, monospace; fill: #5c5c5c; letter-spacing: .14em; }
+      .box { fill: #111; stroke: #2a2a2a; }
+    </style>
+  </defs>
+  <rect width="1200" height="760" fill="#0b0b0b"/>
+  <text x="60" y="70" class="k">PUBLIC-SECTOR LLM BENCHMARK · SHAPE OF THE EVALUATION</text>
+
+  <!-- the 24 tasks -->
+  <text x="60" y="170" class="big">24</text>
+  <text x="140" y="146" class="t">tasks</text>
+  <text x="140" y="170" class="m">8 government and defense domains</text>
+  <g transform="translate(60 210)">
+    <!-- 12 reasoning (filled), 12 agentic (outlined) -->
+    <g fill="#ededed">
+      <rect x="0" y="0" width="34" height="34" rx="3"/><rect x="44" y="0" width="34" height="34" rx="3"/><rect x="88" y="0" width="34" height="34" rx="3"/><rect x="132" y="0" width="34" height="34" rx="3"/><rect x="176" y="0" width="34" height="34" rx="3"/><rect x="220" y="0" width="34" height="34" rx="3"/>
+      <rect x="0" y="44" width="34" height="34" rx="3"/><rect x="44" y="44" width="34" height="34" rx="3"/><rect x="88" y="44" width="34" height="34" rx="3"/><rect x="132" y="44" width="34" height="34" rx="3"/><rect x="176" y="44" width="34" height="34" rx="3"/><rect x="220" y="44" width="34" height="34" rx="3"/>
+    </g>
+    <g fill="none" stroke="#7fd7c4" stroke-width="1.5">
+      <rect x="0.75" y="88.75" width="32.5" height="32.5" rx="3"/><rect x="44.75" y="88.75" width="32.5" height="32.5" rx="3"/><rect x="88.75" y="88.75" width="32.5" height="32.5" rx="3"/><rect x="132.75" y="88.75" width="32.5" height="32.5" rx="3"/><rect x="176.75" y="88.75" width="32.5" height="32.5" rx="3"/><rect x="220.75" y="88.75" width="32.5" height="32.5" rx="3"/>
+      <rect x="0.75" y="132.75" width="32.5" height="32.5" rx="3"/><rect x="44.75" y="132.75" width="32.5" height="32.5" rx="3"/><rect x="88.75" y="132.75" width="32.5" height="32.5" rx="3"/><rect x="132.75" y="132.75" width="32.5" height="32.5" rx="3"/><rect x="176.75" y="132.75" width="32.5" height="32.5" rx="3"/><rect x="220.75" y="132.75" width="32.5" height="32.5" rx="3"/>
+    </g>
+    <text x="280" y="50" class="m">12 reasoning</text>
+    <text x="280" y="140" class="m">12 agentic: tool calls in order</text>
+  </g>
+
+  <!-- three models -->
+  <text x="700" y="146" class="k">MODELS</text>
+  <rect x="700" y="166" width="440" height="64" rx="4" class="box"/><text x="724" y="205" class="t">Grok</text>
+  <rect x="700" y="242" width="440" height="64" rx="4" class="box"/><text x="724" y="281" class="t">Gemini</text>
+  <rect x="700" y="318" width="440" height="64" rx="4" class="box"/><text x="724" y="357" class="t">GPT-5.2</text>
+
+  <!-- what was scored -->
+  <text x="60" y="490" class="k">SCORED ON</text>
+  <g transform="translate(60 512)">
+    <rect width="250" height="110" rx="4" class="box"/>
+    <text x="22" y="44" class="t">Accuracy</text><text x="22" y="72" class="m">facts, math, citations</text>
+    <rect x="270" width="250" height="110" rx="4" class="box"/>
+    <text x="292" y="44" class="t">Reasoning</text><text x="292" y="72" class="m">structure, tripwires</text>
+    <rect x="540" width="250" height="110" rx="4" class="box"/>
+    <text x="562" y="44" class="t">Execution</text><text x="562" y="72" class="m">right tools, right order</text>
+    <rect x="810" width="270" height="110" rx="4" class="box"/>
+    <text x="832" y="44" class="t">Latency</text><text x="832" y="72" class="m">seconds per task</text>
+  </g>
+</svg>

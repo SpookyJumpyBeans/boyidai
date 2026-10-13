@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Boyi Dai</title>
-  <meta name="description" content="Boyi Dai, Computer Engineering at the University of Virginia. Systems built from scratch: an LLM inference engine, a tensor compiler, a SQL engine, an 8-bit CPU.">
+  <title>Boyi Dai · Software Engineer</title>
+  <meta name="description" content="Boyi Dai, Computer Engineering at the University of Virginia. Cloud alerting at Capital One, an LLM benchmark for Oracle's public sector group, and an inference engine and a compiler built from scratch.">
   <meta name="theme-color" content="#0a0a0a">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,9 +15,9 @@
   <header class="nav">
     <a class="brand" href="#top">Boyi Dai</a>
     <nav aria-label="Sections">
+      <a href="#experience">Experience</a>
       <a href="#work">Work</a>
-      <a href="#index">Index</a>
-      <a href="#open-source">Open source</a>
+      <a href="#projects">Projects</a>
       <a href="#about">About</a>
       <span id="nav-links"></span>
     </nav>
@@ -31,33 +31,41 @@
         <p class="intro" id="intro"></p>
         <div class="hero-actions">
           <a class="button" href="#work">View my work <span aria-hidden="true">↓</span></a>
-          <span id="hero-links"></span>
+          <span class="email" id="hero-email"></span>
         </div>
       </div>
-      <aside class="now" id="now" aria-label="Currently building"></aside>
+      <aside class="now" id="signal" aria-label="Current signal" aria-live="polite"></aside>
+    </section>
+
+    <section class="section wrap" id="experience">
+      <div class="section-head"><span class="num">01</span><span class="label">Experience</span></div>
+      <h2 class="section-title">Infrastructure, evaluation, and products.</h2>
+      <ol class="xp" id="xp"></ol>
     </section>
 
     <section class="section wrap" id="work">
-      <div class="section-head"><span class="num">01</span><span class="label">Selected work</span></div>
-      <h2 class="section-title">Measured, not claimed.</h2>
-      <div id="cases"></div>
+      <div class="section-head"><span class="num">02</span><span class="label">Selected work</span></div>
+      <h2 class="section-title">A closer look at the systems.</h2>
+      <div id="work-cases"></div>
     </section>
 
-    <section class="section wrap" id="index">
-      <div class="section-head"><span class="num">02</span><span class="label">Index</span></div>
-      <h2 class="section-title">Everything I've built.</h2>
+    <section class="section wrap" id="projects">
+      <div class="section-head"><span class="num">03</span><span class="label">Projects</span></div>
+      <h2 class="section-title">Built from scratch, measured against the real thing.</h2>
+      <div id="cases"></div>
+      <h3 class="sub-title" id="index">Everything else</h3>
       <div class="filters" id="filters"></div>
       <div class="grid" id="grid"></div>
     </section>
 
     <section class="section wrap" id="open-source">
-      <div class="section-head"><span class="num">03</span><span class="label">Open source</span></div>
+      <div class="section-head"><span class="num">04</span><span class="label">Open source</span></div>
       <h2 class="section-title">Upstream.</h2>
       <ol class="prs" id="prs"></ol>
     </section>
 
     <section class="section wrap" id="about">
-      <div class="section-head"><span class="num">04</span><span class="label">About</span></div>
+      <div class="section-head"><span class="num">05</span><span class="label">About</span></div>
       <div class="about" id="about-body"></div>
     </section>
   </main>
