@@ -13,7 +13,8 @@ window.SITE = {
   headline: ["Infrastructure, systems,", "and the layer underneath."],
   bio: [
     "I'm a Computer Engineering student at the University of Virginia, minoring in statistics. This past summer I built a cloud cost alerting API at Capital One. At TSG I'm Director of Technology for a student consulting group that benchmarked frontier models for Oracle's public sector group and has shipped MVPs for YC-backed founders.",
-    "Outside of work I build systems end to end and benchmark them against the real thing: an LLM inference engine against llama.cpp, a compiler against that engine, a SQL engine against a nested-loop baseline.",
+    "On my own time I build systems end to end and benchmark them against the real thing: an LLM inference engine against llama.cpp, a compiler against that engine, a SQL engine against a nested-loop baseline.",
+    "Outside of work I enjoy playing pickleball and producing music.",
   ],
   statement: "Inference engines, compilers, query engines, and the cloud services around them.",
   // Joined in app.js so the full address is not sitting in the source.
