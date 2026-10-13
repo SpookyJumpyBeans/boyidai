@@ -1,7 +1,7 @@
 // Renders the page from data.js. No framework: the page is static apart from
 // the rotating signal card, the index filters, and a fade-in on scroll.
 
-const { SITE, SIGNAL, EXPERIENCE, WORK, CASE_STUDIES, PROJECTS, CONTRIBUTIONS } = window;
+const { SITE, HERO_STATS, SIGNAL, EXPERIENCE, WORK, CASE_STUDIES, PROJECTS, CONTRIBUTIONS } = window;
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 const ext = (href, label) => `<a class="link-arrow" href="${href}" target="_blank" rel="noopener">${esc(label)} ↗</a>`;
@@ -25,10 +25,63 @@ const spelled = `${user} [at] ${domain} [dot] ${tld}`;
 // -- hero --------------------------------------------------------------------
 
 $("kicker").textContent = `${SITE.place} · ${SITE.school} · Computer Engineering`;
-$("headline").innerHTML = `${esc(SITE.headline[0])} <span class="soft">${esc(SITE.headline[1])}</span>`;
+// Each word rises in on load, one after another.
+let word = 0;
+const words = (line) => line.split(" ").map((w) => `<span class="w" style="--i:${word++}">${esc(w)}</span>`).join(" ");
+$("headline").innerHTML = `${words(SITE.headline[0])} <span class="soft">${words(SITE.headline[1])}</span>`;
+
+const merged = CONTRIBUTIONS.filter((c) => c.status === "merged").length;
+$("hero-stats").innerHTML = HERO_STATS.map((s) =>
+  `<div><dt>${esc(s.count === "merged" ? merged : s.value)}</dt><dd>${esc(s.label)}</dd></div>`).join("");
 $("hero-email").innerHTML = `<a class="link-arrow" href="${mailto}">${esc(spelled)}</a>`;
 $("nav-links").innerHTML = SITE.links.map((l) => `<a class="keep" href="${l.href}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join("")
   + `<a class="keep" href="${mailto}">Email ↗</a>`;
+
+// -- the dot field behind the hero -------------------------------------------
+// A faint grid that brightens around the pointer. Static on touch screens and
+// for reduced motion.
+
+(() => {
+  const canvas = $("dots");
+  const ctx = canvas.getContext("2d");
+  const GAP = 26, REACH = 170;
+  let w = 0, h = 0, px = -1e4, py = -1e4, queued = false;
+
+  function draw() {
+    queued = false;
+    ctx.clearRect(0, 0, w, h);
+    for (let x = GAP / 2; x < w; x += GAP) {
+      for (let y = GAP / 2; y < h; y += GAP) {
+        const d = Math.hypot(x - px, y - py);
+        const t = d < REACH ? 1 - d / REACH : 0;
+        ctx.fillStyle = `rgba(237, 237, 237, ${0.13 + 0.6 * t * t})`;
+        ctx.beginPath();
+        ctx.arc(x, y, 0.9 + 0.9 * t, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+  }
+  const request = () => { if (!queued) { queued = true; requestAnimationFrame(draw); } };
+
+  function resize() {
+    const r = canvas.getBoundingClientRect(), dpr = devicePixelRatio || 1;
+    w = r.width; h = r.height;
+    canvas.width = w * dpr; canvas.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    draw();
+  }
+
+  addEventListener("resize", resize);
+  resize();
+  if (reducedMotion || !matchMedia("(pointer: fine)").matches) return;
+  const shell = canvas.parentElement;
+  shell.addEventListener("pointermove", (e) => {
+    const r = canvas.getBoundingClientRect();
+    px = e.clientX - r.left; py = e.clientY - r.top;
+    request();
+  });
+  shell.addEventListener("pointerleave", () => { px = py = -1e4; request(); });
+})();
 
 // -- the current-signal card -------------------------------------------------
 
@@ -176,17 +229,61 @@ $("prs").innerHTML = CONTRIBUTIONS.map((c, i) => `
 
 // -- about -------------------------------------------------------------------
 
+// How far through the degree, from the start and end months in SITE.graduation.
+const [startText, endText] = SITE.graduation.split(" to ");
+const month = (t) => { const [m, y] = t.split(" "); return new Date(`${m} 1, ${y}`); };
+const start = month(startText), end = month(endText);
+const done = Math.min(1, Math.max(0, (Date.now() - start) / (end - start)));
+const year = Math.min(4, Math.floor(done * 4) + 1);
+
+const NUMBERS = [
+  { value: EXPERIENCE.length, label: "Roles" },
+  { value: CASE_STUDIES.length + PROJECTS.length, label: "Projects" },
+  { value: CONTRIBUTIONS.length, label: "Upstream PRs" },
+  { value: SITE.languages.length, label: "Languages" },
+];
+const chips = (xs, cls = "") => `<div class="chips ${cls}">${xs.map((x) => `<span>${esc(x)}</span>`).join("")}</div>`;
+const rows = (xs) => `<ol class="rows">${xs.map((x, i) => `<li><span class="n">${pad(i + 1)}</span><span>${esc(x.text)}</span><span class="r">${esc(x.right || "")}</span></li>`).join("")}</ol>`;
+
 $("about-body").innerHTML = `
-  <div class="reveal">
-    <p class="about-lead">Computer Engineering at UVA, minor in statistics.</p>
-    ${SITE.bio.map((b) => `<p>${esc(b)}</p>`).join("")}
+  <div class="card card-intro reveal">
+    <h4>About</h4>
+    <p class="statement">${esc(SITE.statement)}</p>
+    <div class="bio">${SITE.bio.map((b) => `<p>${esc(b)}</p>`).join("")}</div>
   </div>
-  <div class="facts reveal">
-    <div class="fact"><h4>Education</h4><p>${esc(SITE.school)}</p><p class="sub">${esc(SITE.degree)}<br>${esc(SITE.graduation)}</p></div>
-    <div class="fact"><h4>Coursework</h4><p class="sub">${SITE.coursework.map(esc).join(" · ")}</p></div>
-    <div class="fact"><h4>Certifications and programs</h4><p class="sub">${[...SITE.certifications, ...SITE.programs].map(esc).join(" · ")}</p></div>
-    <div class="fact"><h4>Toolkit</h4><p>${SITE.languages.map(esc).join(" · ")}</p><p class="sub">${SITE.tools.map(esc).join(" · ")}</p></div>
+  <div class="card card-school reveal">
+    <h4>Education</h4>
+    <p class="school-name">${esc(SITE.school)}</p>
+    <p class="sub">${esc(SITE.degree)}</p>
+    <div class="progress">
+      <div class="progress-bar"><i style="--w:${(done * 100).toFixed(1)}%"></i></div>
+      <div class="progress-meta"><span>${esc(startText)}</span><span>Year ${year} of 4</span><span>${esc(endText)}</span></div>
+    </div>
+  </div>
+  <div class="card card-numbers reveal">
+    <h4>By the numbers</h4>
+    <div class="numbers">${NUMBERS.map((n) => `<div><b>${n.value}</b><span>${esc(n.label)}</span></div>`).join("")}</div>
+  </div>
+  <div class="card card-half reveal">
+    <h4>Languages</h4>${chips(SITE.languages)}
+    <h4>Tools</h4>${chips(SITE.tools, "dim")}
+  </div>
+  <div class="card card-half reveal">
+    <h4>Right now</h4>${rows(SIGNAL.map((s) => ({ text: `${s.title}: ${s.line}`, right: s.label })))}
+  </div>
+  <div class="card card-half reveal">
+    <h4>Coursework</h4>${chips(SITE.coursework)}
+  </div>
+  <div class="card card-half reveal">
+    <h4>Certifications and programs</h4>${rows([...SITE.certifications, ...SITE.programs].map((text) => ({ text })))}
   </div>`;
+
+// A soft light that follows the pointer across each card.
+document.querySelectorAll(".card").forEach((card) => card.addEventListener("pointermove", (e) => {
+  const r = card.getBoundingClientRect();
+  card.style.setProperty("--mx", `${e.clientX - r.left}px`);
+  card.style.setProperty("--my", `${e.clientY - r.top}px`);
+}));
 
 $("footer").innerHTML = `<span>${esc(SITE.name)} · ${new Date().getFullYear()}</span>
   <nav>${SITE.links.map((l) => `<a href="${l.href}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join("")}

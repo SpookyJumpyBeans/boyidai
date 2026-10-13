@@ -5,7 +5,7 @@
     </marker>
     <style>
       .box { fill: #111; stroke: #2a2a2a; }
-      .hot { fill: #111; stroke: #6b8cff; }
+      .hot { fill: #111; stroke: #ededed; }
       .t { font: 500 23px Inter, system-ui, sans-serif; fill: #ededed; }
       .m { font: 400 15.5px "JetBrains Mono", Consolas, monospace; fill: #8b8b8b; letter-spacing: .04em; }
       .k { font: 400 14px "JetBrains Mono", Consolas, monospace; fill: #5c5c5c; letter-spacing: .14em; }

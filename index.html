@@ -24,21 +24,27 @@
   </header>
 
   <main id="top">
-    <section class="hero wrap">
-      <div class="hero-text">
-        <p class="kicker" id="kicker"></p>
-        <h1 id="headline"></h1>
-        <div class="hero-actions">
-          <a class="button" href="#work">View my work <span aria-hidden="true">↓</span></a>
-          <span class="email" id="hero-email"></span>
+    <div class="hero-shell">
+      <canvas class="hero-dots" id="dots" aria-hidden="true"></canvas>
+      <section class="hero wrap">
+        <div class="hero-grid">
+          <div class="hero-text">
+            <p class="kicker" id="kicker"></p>
+            <h1 id="headline"></h1>
+            <div class="hero-actions">
+              <a class="button" href="#work">View my work <span aria-hidden="true">↓</span></a>
+              <span class="email" id="hero-email"></span>
+            </div>
+          </div>
+          <aside class="now" id="signal" aria-label="Current signal" aria-live="polite"></aside>
         </div>
-      </div>
-      <aside class="now" id="signal" aria-label="Current signal" aria-live="polite"></aside>
-    </section>
+        <dl class="hero-stats" id="hero-stats"></dl>
+      </section>
+    </div>
 
     <section class="section wrap" id="about">
       <div class="section-head"><span class="num">01</span><span class="label">About</span></div>
-      <div class="about" id="about-body"></div>
+      <div class="bento" id="about-body"></div>
     </section>
 
     <section class="section wrap" id="experience">

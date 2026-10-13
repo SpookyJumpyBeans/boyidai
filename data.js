@@ -12,9 +12,10 @@ window.SITE = {
   graduation: "Aug 2024 to May 2028",
   headline: ["Infrastructure, systems,", "and the layer underneath."],
   bio: [
-    "I'm a Computer Engineering student at the University of Virginia, minoring in statistics. This summer I built a cloud cost alerting API at Capital One. At TSG I'm Director of Technology for a student consulting group that benchmarked frontier models for Oracle's public sector group and has shipped MVPs for YC-backed founders.",
+    "I'm a Computer Engineering student at the University of Virginia, minoring in statistics. This past summer I built a cloud cost alerting API at Capital One. At TSG I'm Director of Technology for a student consulting group that benchmarked frontier models for Oracle's public sector group and has shipped MVPs for YC-backed founders.",
     "Outside of work I build systems end to end and benchmark them against the real thing: an LLM inference engine against llama.cpp, a compiler against that engine, a SQL engine against a nested-loop baseline.",
   ],
+  statement: "Inference engines, compilers, query engines, and the cloud services around them.",
   // Shown as "name [at] domain [dot] edu" so the address is not trivially scraped.
   email: { user: "fpm9tr", domain: "virginia", tld: "edu" },
   links: [
@@ -28,18 +29,30 @@ window.SITE = {
   tools: ["AWS", "PostgreSQL", "Docker", "Kubernetes", "Terraform", "React", "Next.js", "Angular", "PyTorch"],
 };
 
+// The strip along the bottom of the landing page.
+window.HERO_STATS = [
+  { value: "20,000+", label: "Internal users on my Capital One API" },
+  { value: "1.4×", label: "Faster decode than llama.cpp" },
+  { value: "62 → 13", label: "Kernels per block after fusion" },
+  { count: "merged", label: "Merged upstream pull requests" },
+];
+
 // The rotating card in the hero: what is true right now.
 window.SIGNAL = [
   { label: "Now", title: "TSG", line: "Director of Technology, since Aug 2026" },
   { label: "Building", title: "nanocompile", line: "Tensor compiler for nanoinfer · phase 3 of 8", progress: 3 / 8 },
-  { label: "This summer", title: "Capital One", line: "Software Engineering Intern · Richmond, VA" },
+  { label: "Recently", title: "Capital One", line: "Software Engineering Intern · Richmond, VA" },
 ];
 
 window.EXPERIENCE = [
   { company: "Capital One", logo: { src: "assets/logo-capital-one.svg", bg: "#fff", fit: "wide" }, role: "Software Engineering Intern", detail: "Cloud cost alerting API in Go on AWS",
     dates: "Jun 2026 to Aug 2026", place: "Richmond, VA", href: "#case-capital-one" },
-  { company: "TSG (Technology Strategy Group)", logo: { src: "assets/logo-tsg.jpg", bg: "#000" }, role: "Director of Technology", detail: "Promoted from Technology Consultant in Aug 2026. Oracle public sector LLM benchmark; MVPs for YC-backed founders",
-    dates: "Aug 2025 to Present", place: "Charlottesville, VA", href: "#case-oracle" },
+  { company: "Oracle", logo: { icon: "oracle", color: "#c74634" }, role: "Analyst, Public Sector AI Strategy · Contract",
+    detail: "Engagement through TSG: benchmarked Grok, Gemini and GPT-5.2 on a 24-task defense and government dataset",
+    dates: "Spring 2026", place: "Remote", href: "#case-oracle" },
+  { company: "TSG (Technology Strategy Group)", logo: { src: "assets/logo-tsg.jpg", bg: "#000" }, role: "Director of Technology",
+    detail: "Promoted from Technology Consultant in Aug 2026. Leads the technical side of client work, including MVPs for YC-backed founders",
+    dates: "Aug 2025 to Present", place: "Charlottesville, VA", href: null },
   { company: "Polylabs", logo: { src: "assets/logo-polylabs.jpg", bg: "#fff" }, role: "AI Engineering Intern", detail: "TogetherX, a founder product discovery platform, grown to 30+ revenue-generating clients",
     dates: "Aug 2025 to Feb 2026", place: "Palo Alto, CA", href: null },
   { company: "YellowRed Company LLC", logo: { src: "assets/logo-yellowred.png", bg: "#fff" }, role: "Lead Software Engineer", detail: "i.Lab Startup Accelerator: $18K non-dilutive funding, 400+ monthly active users",
