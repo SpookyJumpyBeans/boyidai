@@ -1,7 +1,7 @@
 // Renders the page from data.js. No framework: the page is static apart from
 // the rotating signal card, the index filters, and a fade-in on scroll.
 
-const { SITE, HERO_STATS, SIGNAL, EXPERIENCE, WORK, CASE_STUDIES, PROJECTS, CONTRIBUTIONS } = window;
+const { SITE, SIGNAL, EXPERIENCE, WORK, CASE_STUDIES, PROJECTS, CONTRIBUTIONS } = window;
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 const ext = (href, label) => `<a class="link-arrow" href="${href}" target="_blank" rel="noopener">${esc(label)} ↗</a>`;
@@ -16,11 +16,10 @@ function logo(l, size = "") {
 }
 const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-// The address is assembled here and shown spelled out, so it is not sitting
-// in the HTML for scrapers.
+// The address is assembled here, so it is not sitting in the HTML for scrapers.
 const { user, domain, tld } = SITE.email;
-const mailto = `mailto:${user}@${domain}.${tld}`;
-const spelled = `${user} [at] ${domain} [dot] ${tld}`;
+const address = `${user}@${domain}.${tld}`;
+const mailto = `mailto:${address}`;
 
 // -- hero --------------------------------------------------------------------
 
@@ -29,11 +28,7 @@ $("kicker").textContent = `${SITE.place} · ${SITE.school} · Computer Engineeri
 let word = 0;
 const words = (line) => line.split(" ").map((w) => `<span class="w" style="--i:${word++}">${esc(w)}</span>`).join(" ");
 $("headline").innerHTML = `${words(SITE.headline[0])} <span class="soft">${words(SITE.headline[1])}</span>`;
-
-const merged = CONTRIBUTIONS.filter((c) => c.status === "merged").length;
-$("hero-stats").innerHTML = HERO_STATS.map((s) =>
-  `<div><dt>${esc(s.count === "merged" ? merged : s.value)}</dt><dd>${esc(s.label)}</dd></div>`).join("");
-$("hero-email").innerHTML = `<a class="link-arrow" href="${mailto}">${esc(spelled)}</a>`;
+$("hero-email").innerHTML = `<a class="link-arrow" href="${mailto}">${esc(address)}</a>`;
 $("nav-links").innerHTML = SITE.links.map((l) => `<a class="keep" href="${l.href}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join("")
   + `<a class="keep" href="${mailto}">Email ↗</a>`;
 
@@ -236,12 +231,6 @@ const start = month(startText), end = month(endText);
 const done = Math.min(1, Math.max(0, (Date.now() - start) / (end - start)));
 const year = Math.min(4, Math.floor(done * 4) + 1);
 
-const NUMBERS = [
-  { value: EXPERIENCE.length, label: "Roles" },
-  { value: CASE_STUDIES.length + PROJECTS.length, label: "Projects" },
-  { value: CONTRIBUTIONS.length, label: "Upstream PRs" },
-  { value: SITE.languages.length, label: "Languages" },
-];
 const chips = (xs, cls = "") => `<div class="chips ${cls}">${xs.map((x) => `<span>${esc(x)}</span>`).join("")}</div>`;
 const rows = (xs) => `<ol class="rows">${xs.map((x, i) => `<li><span class="n">${pad(i + 1)}</span><span>${esc(x.text)}</span><span class="r">${esc(x.right || "")}</span></li>`).join("")}</ol>`;
 
@@ -255,26 +244,20 @@ $("about-body").innerHTML = `
     <h4>Education</h4>
     <p class="school-name">${esc(SITE.school)}</p>
     <p class="sub">${esc(SITE.degree)}</p>
+    <p class="class-of">Class of ${end.getFullYear()}</p>
     <div class="progress">
       <div class="progress-bar"><i style="--w:${(done * 100).toFixed(1)}%"></i></div>
       <div class="progress-meta"><span>${esc(startText)}</span><span>Year ${year} of 4</span><span>${esc(endText)}</span></div>
     </div>
   </div>
-  <div class="card card-numbers reveal">
-    <h4>By the numbers</h4>
-    <div class="numbers">${NUMBERS.map((n) => `<div><b>${n.value}</b><span>${esc(n.label)}</span></div>`).join("")}</div>
-  </div>
-  <div class="card card-half reveal">
+  <div class="card card-third reveal">
     <h4>Languages</h4>${chips(SITE.languages)}
     <h4>Tools</h4>${chips(SITE.tools, "dim")}
   </div>
-  <div class="card card-half reveal">
-    <h4>Right now</h4>${rows(SIGNAL.map((s) => ({ text: `${s.title}: ${s.line}`, right: s.label })))}
-  </div>
-  <div class="card card-half reveal">
+  <div class="card card-third reveal">
     <h4>Coursework</h4>${chips(SITE.coursework)}
   </div>
-  <div class="card card-half reveal">
+  <div class="card card-third reveal">
     <h4>Certifications and programs</h4>${rows([...SITE.certifications, ...SITE.programs].map((text) => ({ text })))}
   </div>`;
 

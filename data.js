@@ -16,7 +16,7 @@ window.SITE = {
     "Outside of work I build systems end to end and benchmark them against the real thing: an LLM inference engine against llama.cpp, a compiler against that engine, a SQL engine against a nested-loop baseline.",
   ],
   statement: "Inference engines, compilers, query engines, and the cloud services around them.",
-  // Shown as "name [at] domain [dot] edu" so the address is not trivially scraped.
+  // Joined in app.js so the full address is not sitting in the source.
   email: { user: "fpm9tr", domain: "virginia", tld: "edu" },
   links: [
     { label: "GitHub", href: GH },
@@ -28,14 +28,6 @@ window.SITE = {
   languages: ["Python", "Go", "C/C++", "Rust", "Java", "TypeScript", "SQL", "VHDL"],
   tools: ["AWS", "PostgreSQL", "Docker", "Kubernetes", "Terraform", "React", "Next.js", "Angular", "PyTorch"],
 };
-
-// The strip along the bottom of the landing page.
-window.HERO_STATS = [
-  { value: "20,000+", label: "Internal users on my Capital One API" },
-  { value: "1.4×", label: "Faster decode than llama.cpp" },
-  { value: "62 → 13", label: "Kernels per block after fusion" },
-  { count: "merged", label: "Merged upstream pull requests" },
-];
 
 // The rotating card in the hero: what is true right now.
 window.SIGNAL = [
