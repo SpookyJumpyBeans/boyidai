@@ -257,7 +257,7 @@ a.xp-row:hover { background: var(--surface); }
 .card p { margin: 0 0 14px; color: #c9c9c9; }
 .card p:last-child { margin-bottom: 0; }
 .card-intro { grid-column: span 4; grid-row: span 2; display: flex; flex-direction: column; }
-.card-intro .statement { font-size: clamp(28px, 3.4vw, 46px); font-weight: 500; letter-spacing: -0.035em; line-height: 1.08; color: var(--text); margin: 0; padding-bottom: 56px; }
+.card-intro .statement { font-size: clamp(28px, 3.4vw, 46px); font-weight: 500; letter-spacing: -0.035em; line-height: 1.08; color: var(--text); margin: 0; padding-bottom: 40px; }
 .card-intro .statement span { color: var(--dim); }
 .card-intro .bio { max-width: 640px; font-size: 15px; line-height: 1.65; }
 .card-school, .card-side { grid-column: span 2; }
