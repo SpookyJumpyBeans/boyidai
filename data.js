@@ -20,7 +20,7 @@ window.SITE = {
   email: { user: "fpm9tr", domain: "virginia", tld: "edu" },
   links: [
     { label: "GitHub", href: GH },
-    // { label: "LinkedIn", href: "https://www.linkedin.com/in/..." },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/boyi-dai-65b13220a/" },
   ],
   coursework: ["Compilers", "Computer Systems and Organization", "Embedded Computer Systems", "Data Structures and Algorithms", "Digital Logic Design", "Signals and Systems"],
   certifications: ["AWS Certified Cloud Practitioner"],
@@ -57,7 +57,7 @@ window.WORK = [
     id: "capital-one",
     org: "Capital One",
     logo: { src: "assets/logo-capital-one.svg", bg: "#fff", fit: "wide" },
-    title: "Cloud cost alerting API",
+    title: "Cloud Cost Alerting API",
     year: "2026",
     lede: "An alerting service that tells teams when their cloud spend crosses a line, for more than 20,000 internal users.",
     stats: [
@@ -76,7 +76,7 @@ window.WORK = [
     id: "oracle",
     org: "Oracle · via TSG",
     logo: { icon: "oracle", color: "#c74634" },
-    title: "Frontier LLMs for public sector work",
+    title: "Frontier LLMs for Public Sector Work",
     year: "2026",
     lede: "An independent evaluation, for Oracle's public sector group, of which frontier models fit government and defense workloads.",
     stats: [

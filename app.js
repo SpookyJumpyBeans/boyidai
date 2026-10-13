@@ -144,7 +144,7 @@ function caseStudy(c, i, kicker) {
   return `
   <article class="case reveal" id="case-${c.id}">
     <header class="case-head">
-      <span class="case-label">${pad(i + 1)} / Case study</span>
+      <span class="case-label">${pad(i + 1)} / Deep dive</span>
       ${c.logo ? logo(c.logo, "big") : `<span aria-hidden="true"></span>`}
       <div class="case-heading">
         <div class="case-kicker">${esc(kicker)}</div>
