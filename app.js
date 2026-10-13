@@ -96,13 +96,17 @@ $("xp").innerHTML = EXPERIENCE.map((x, i) => {
 function caseStudy(c, i, kicker) {
   return `
   <article class="case reveal" id="case-${c.id}">
-    <div class="case-head"><span>${pad(i + 1)} / Case study</span><span>${esc(c.year)}</span></div>
-    <div class="case-main">
-      <div class="case-text">
-        <div class="case-kicker">${logo(c.logo, "small")}${esc(kicker)}</div>
+    <header class="case-head">
+      <span class="case-label">${pad(i + 1)} / Case study</span>
+      ${c.logo ? logo(c.logo, "big") : `<span aria-hidden="true"></span>`}
+      <div class="case-heading">
+        <div class="case-kicker">${esc(kicker)}</div>
         <h3 class="case-title">${esc(c.title)}</h3>
-        <p class="case-lede">${esc(c.lede)}</p>
       </div>
+      <span class="case-year">${esc(c.year)}</span>
+    </header>
+    <div class="case-main">
+      <div class="case-text"><p class="case-lede">${esc(c.lede)}</p></div>
       <figure class="case-figure"><img src="${c.image}" alt="${esc(c.caption)}" loading="lazy"><figcaption>${esc(c.caption)}</figcaption></figure>
     </div>
     <div class="stats">${c.stats.map((s) => `<div class="stat"><div class="stat-value">${esc(s.value)}</div><div class="stat-label">${esc(s.label)}</div></div>`).join("")}</div>
