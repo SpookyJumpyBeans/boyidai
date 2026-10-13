@@ -11,7 +11,7 @@ const ICONS = "https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons";
 function logo(l, size = "") {
   if (!l) return "";
   if (l.icon) return `<span class="logo ${size}" style="background:${l.color}"><img src="${ICONS}/${l.icon}.svg" alt="" style="filter:invert(1)"></span>`;
-  if (l.src) return `<span class="logo ${size}"><img src="${l.src}" alt=""></span>`;
+  if (l.src) return `<span class="logo ${size} ${l.fit || ""}" style="background:${l.bg || "transparent"}"><img src="${l.src}" alt=""></span>`;
   return `<span class="logo ${size} mono" style="background:${l.color}" aria-hidden="true">${esc(l.mark)}</span>`;
 }
 const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;

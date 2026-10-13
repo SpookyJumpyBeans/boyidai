@@ -37,13 +37,13 @@ window.SIGNAL = [
 ];
 
 window.EXPERIENCE = [
-  { company: "Capital One", logo: { mark: "C1", color: "#d03027" }, role: "Software Engineering Intern", detail: "Cloud cost alerting API in Go on AWS",
+  { company: "Capital One", logo: { src: "assets/logo-capital-one.svg", bg: "#fff", fit: "wide" }, role: "Software Engineering Intern", detail: "Cloud cost alerting API in Go on AWS",
     dates: "Jun 2026 to Aug 2026", place: "Richmond, VA", href: "#case-capital-one" },
-  { company: "TSG (Technology Strategy Group)", logo: { mark: "TSG", color: "#2a2a2a" }, role: "Director of Technology", detail: "Promoted from Technology Consultant in Aug 2026. Oracle public sector LLM benchmark; MVPs for YC-backed founders",
+  { company: "TSG (Technology Strategy Group)", logo: { src: "assets/logo-tsg.jpg", bg: "#000" }, role: "Director of Technology", detail: "Promoted from Technology Consultant in Aug 2026. Oracle public sector LLM benchmark; MVPs for YC-backed founders",
     dates: "Aug 2025 to Present", place: "Charlottesville, VA", href: "#case-oracle" },
-  { company: "Polylabs", logo: { mark: "PL", color: "#2a2a2a" }, role: "AI Engineering Intern", detail: "TogetherX, a founder product discovery platform, grown to 30+ revenue-generating clients",
+  { company: "Polylabs", logo: { src: "assets/logo-polylabs.jpg", bg: "#fff" }, role: "AI Engineering Intern", detail: "TogetherX, a founder product discovery platform, grown to 30+ revenue-generating clients",
     dates: "Aug 2025 to Feb 2026", place: "Palo Alto, CA", href: null },
-  { company: "YellowRed Company LLC", logo: { mark: "YR", color: "#2a2a2a" }, role: "Lead Software Engineer", detail: "i.Lab Startup Accelerator: $18K non-dilutive funding, 400+ monthly active users",
+  { company: "YellowRed Company LLC", logo: { src: "assets/logo-yellowred.png", bg: "#fff" }, role: "Lead Software Engineer", detail: "i.Lab Startup Accelerator: $18K non-dilutive funding, 400+ monthly active users",
     dates: "Jan 2025 to Mar 2025", place: "Charlottesville, VA", href: null },
 ];
 
@@ -52,7 +52,7 @@ window.WORK = [
   {
     id: "capital-one",
     org: "Capital One",
-    logo: { mark: "C1", color: "#d03027" },
+    logo: { src: "assets/logo-capital-one.svg", bg: "#fff", fit: "wide" },
     title: "Cloud cost alerting API",
     year: "2026",
     lede: "An alerting service that tells teams when their cloud spend crosses a line, for more than 20,000 internal users.",
