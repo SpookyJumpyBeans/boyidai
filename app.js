@@ -29,7 +29,7 @@ $("kicker").textContent = `${SITE.place} · ${SITE.school} · Computer Engineeri
 let word = 0;
 const words = (line) => line.split(" ").map((w) => `<span class="w" style="--i:${word++}">${esc(w)}</span>`).join(" ");
 $("headline").innerHTML = `${words(SITE.headline[0])} <span class="soft">${words(SITE.headline[1])}</span>`;
-$("hero-email").innerHTML = `<a class="link-arrow" href="${mailto}">${esc(address)}</a>`;
+$("hero-email").innerHTML = `<a class="link-arrow" href="${mailto}" title="${esc(address)}">Get in touch ↗</a>`;
 $("nav-links").innerHTML = SITE.links.map((l) => `<a class="keep" href="${l.href}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join("")
   + `<a class="keep" href="${mailto}">Email ↗</a>`;
 
