@@ -14,7 +14,7 @@ window.SITE = {
   bio: [
     "Hi, I'm Boyi Dai, a Computer Engineering student at the University of Virginia, minoring in statistics. I'm most interested in infrastructure, compilers, and the systems that make AI models run fast. My work has taken me across cloud cost alerting at Capital One, frontier-model evaluation for Oracle's public sector group, and leading engineering at TSG, where we ship MVPs for YC-backed founders. I like problems where speed and correctness are both on the line.",
     "On my own time I build systems end to end and benchmark them against the real thing: an LLM inference engine against llama.cpp, a compiler against that engine, a SQL engine against a nested-loop baseline.",
-    "Outside of software, you'll find me on the pickleball court, playing pickup basketball, at the piano, or producing beats that are, in my completely unbiased opinion, pretty sick. I'm convinced a clean kick drum and a well-fused kernel scratch the same itch: cut everything that isn't pulling its weight.",
+    "Outside of software, you'll find me on the pickleball court, playing pickup basketball, at the piano, or producing beats that are, in my completely unbiased opinion, pretty sick. If you need a fourth for doubles or a second opinion on a hi-hat pattern, my inbox is open.",
   ],
   statement: "Inference engines, compilers, query engines, and the cloud services around them.",
   // Joined in app.js so the full address is not sitting in the source.
