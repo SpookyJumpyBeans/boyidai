@@ -180,6 +180,9 @@ a.xp-row:hover { background: var(--surface); }
   filter: grayscale(1) contrast(1.05) brightness(.8); transition: filter .35s, transform .35s;
 }
 .tile:hover .tile-img img { filter: none; transform: scale(1.02); }
+.tile-img.art { display: block; color: #d6d6d6; background: #0b0b0b; border-bottom: 1px solid var(--line); transition: color .25s; }
+.tile-img.art svg { width: 100%; height: 100%; display: block; }
+.tile:hover .tile-img.art { color: var(--accent); }
 /* A light screenshot (a white chart) is shown inverted until hovered, so it sits in the dark page. */
 .tile-img.light img { filter: grayscale(1) invert(.92) brightness(.9); }
 .case-figure.light img { filter: invert(.92) hue-rotate(180deg); }

@@ -144,7 +144,7 @@ function renderGrid() {
     (filter.year === "All" || String(p.year) === String(filter.year)));
   $("grid").innerHTML = shown.length ? shown.map((p) => `
     <article class="tile">
-      <a class="tile-img${p.light ? " light" : ""}" href="${p.live || p.repo}" target="_blank" rel="noopener" aria-label="${esc(p.title)}"><img src="${p.image}" alt="" loading="lazy"></a>
+      <a class="tile-img art" href="${p.live || p.repo}" target="_blank" rel="noopener" aria-label="${esc(p.title)}">${window.ART(p.id)}</a>
       <div class="tile-body">
         <div class="tile-top"><span class="tile-title">${esc(p.title)}</span><span class="meta">${p.year} · ${esc(p.kind)}</span></div>
         <div class="tile-line">${esc(p.line)}</div>
