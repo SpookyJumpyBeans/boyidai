@@ -11,7 +11,6 @@ window.SITE = {
   degree: "B.S. Computer Engineering, Minor in Statistics",
   graduation: "Aug 2024 to May 2028",
   headline: ["Infrastructure, systems,", "and the layer underneath."],
-  intro: "Computer Engineering at UVA. I've built cloud alerting at Capital One, benchmarked frontier models for Oracle's public sector group, and an LLM inference engine and a compiler from scratch.",
   bio: [
     "I'm a Computer Engineering student at the University of Virginia, minoring in statistics. This summer I built a cloud cost alerting API at Capital One. At TSG I'm Director of Technology for a student consulting group that benchmarked frontier models for Oracle's public sector group and has shipped MVPs for YC-backed founders.",
     "Outside of work I build systems end to end and benchmark them against the real thing: an LLM inference engine against llama.cpp, a compiler against that engine, a SQL engine against a nested-loop baseline.",

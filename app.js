@@ -26,7 +26,6 @@ const spelled = `${user} [at] ${domain} [dot] ${tld}`;
 
 $("kicker").textContent = `${SITE.place} · ${SITE.school} · Computer Engineering`;
 $("headline").innerHTML = `${esc(SITE.headline[0])} <span class="soft">${esc(SITE.headline[1])}</span>`;
-$("intro").textContent = SITE.intro;
 $("hero-email").innerHTML = `<a class="link-arrow" href="${mailto}">${esc(spelled)}</a>`;
 $("nav-links").innerHTML = SITE.links.map((l) => `<a class="keep" href="${l.href}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join("")
   + `<a class="keep" href="${mailto}">Email ↗</a>`;
