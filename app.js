@@ -23,6 +23,7 @@ const mailto = `mailto:${address}`;
 
 // -- hero --------------------------------------------------------------------
 
+$("hero-name").textContent = SITE.name;
 $("kicker").textContent = `${SITE.place} · ${SITE.school} · Computer Engineering`;
 // Each word rises in on load, one after another.
 let word = 0;
