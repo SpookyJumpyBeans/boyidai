@@ -250,15 +250,15 @@ $("about-body").innerHTML = `
       <div class="progress-meta"><span>${esc(startText)}</span><span>Year ${year} of 4</span><span>${esc(endText)}</span></div>
     </div>
   </div>
-  <div class="card card-third reveal">
+  <div class="card card-side reveal">
+    <h4>Certifications and programs</h4>${rows([...SITE.certifications, ...SITE.programs].map((text) => ({ text })))}
+  </div>
+  <div class="card card-half reveal">
     <h4>Languages</h4>${chips(SITE.languages)}
     <h4>Tools</h4>${chips(SITE.tools, "dim")}
   </div>
-  <div class="card card-third reveal">
+  <div class="card card-half reveal">
     <h4>Coursework</h4>${chips(SITE.coursework)}
-  </div>
-  <div class="card card-third reveal">
-    <h4>Certifications and programs</h4>${rows([...SITE.certifications, ...SITE.programs].map((text) => ({ text })))}
   </div>`;
 
 // A soft light that follows the pointer across each card.
