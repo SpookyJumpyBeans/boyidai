@@ -41,7 +41,7 @@ window.EXPERIENCE = [
     dates: "Jun 2026 to Aug 2026", place: "Richmond, VA", href: "#case-capital-one" },
   { company: "Oracle", logo: { icon: "oracle", color: "#c74634" }, role: "Analyst, Public Sector AI Strategy · Contract",
     detail: "Engagement through TSG: benchmarked Grok, Gemini and GPT-5.2 on a 24-task defense and government dataset",
-    dates: "Spring 2026", place: "Remote", href: "#case-oracle" },
+    dates: "Feb 2026 to May 2026", place: "Remote", href: "#case-oracle" },
   { company: "TSG (Technology Strategy Group)", logo: { src: "assets/logo-tsg.jpg", bg: "#000" }, role: "Director of Technology",
     detail: "Promoted from Technology Consultant in Aug 2026. Leads the technical side of client work, including MVPs for YC-backed founders",
     dates: "Aug 2025 to Present", place: "Charlottesville, VA", href: null },
