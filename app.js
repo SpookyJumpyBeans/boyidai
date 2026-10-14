@@ -271,7 +271,7 @@ document.querySelectorAll(".card").forEach((card) => card.addEventListener("poin
 
 $("footer").innerHTML = `<span>${esc(SITE.name)} · ${new Date().getFullYear()}</span>
   <nav>${SITE.links.map((l) => `<a href="${l.href}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join("")}
-  <a href="${mailto}">Email ↗</a></nav>`;
+  <a href="${mailto}">Contact ↗</a></nav>`;
 
 // -- motion ------------------------------------------------------------------
 
