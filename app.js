@@ -1,7 +1,7 @@
 // Renders the page from data.js. No framework: the page is static apart from
 // the rotating signal card, the index filters, and a fade-in on scroll.
 
-const { SITE, SIGNAL, EXPERIENCE, WORK, CASE_STUDIES, PROJECTS, CONTRIBUTIONS } = window;
+const { SITE, SIGNAL, EXPERIENCE, WORK, CASE_STUDIES, PROJECTS, CONTRIBUTIONS, POSTS } = window;
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 const ext = (href, label) => `<a class="link-arrow" href="${href}" target="_blank" rel="noopener">${esc(label)} ↗</a>`;
@@ -222,6 +222,17 @@ $("prs").innerHTML = CONTRIBUTIONS.map((c, i) => `
     <span class="status ${c.status}">${c.status}</span>
     <span class="date">${new Date(c.date + "T12:00").toLocaleDateString("en-US", { month: "short", year: "numeric" })}</span>
     <span class="arrow">↗</span></a></li>`).join("");
+
+// -- writing -----------------------------------------------------------------
+
+const longDate = (d) => new Date(d + "T12:00").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+$("posts").innerHTML = POSTS.length ? POSTS.map((p, i) => `
+  <li><a href="post.html?p=${encodeURIComponent(p.slug)}">
+    <span class="n">${pad(i + 1)}</span>
+    <span class="post-main"><span class="title">${esc(p.title)}</span><span class="summary">${esc(p.summary)}</span></span>
+    <span class="date">${longDate(p.date)}</span>
+    <span class="arrow">→</span></a></li>`).join("")
+  : `<li class="empty">[0] First post coming soon.</li>`;
 
 // -- about -------------------------------------------------------------------
 

@@ -160,6 +160,12 @@ window.PROJECTS = [
     repo: `${GH}/audio-analyzer`, live: null },
 ];
 
+// Writing: each post is a Markdown file at posts/<slug>.md, listed here
+// newest first. The page at post.html?p=<slug> renders it.
+window.POSTS = [
+  // { slug: "my-first-post", title: "My first post", date: "2026-10-20", summary: "One sentence on what it covers." },
+];
+
 window.CONTRIBUTIONS = [
   { repo: "apache/solr", number: 5167, title: "Overseer collection lock leaks when marking an async task as running fails", status: "open", date: "2026-10-16" },
   { repo: "apache/solr", number: 5114, title: "CREATESNAPSHOT reports success when a shard has no active replica", status: "open", date: "2026-10-13" },

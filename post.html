@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Writing · Boyi Dai</title>
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="nav scrolled">
+    <a class="brand" href="./">Boyi Dai</a>
+    <nav aria-label="Sections">
+      <a class="keep" href="./#writing">← All writing</a>
+    </nav>
+  </header>
+
+  <main class="wrap post">
+    <p class="post-meta" id="post-meta"></p>
+    <h1 class="post-title" id="post-title"></h1>
+    <article class="prose" id="post-body"></article>
+  </main>
+
+  <footer class="footer wrap"><span>Boyi Dai</span><nav><a href="./">Home</a></nav></footer>
+
+  <script src="data.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+  <script>
+    // Renders posts/<slug>.md for post.html?p=<slug>.
+    const slug = new URLSearchParams(location.search).get("p");
+    const post = window.POSTS.find((p) => p.slug === slug);
+    const body = document.getElementById("post-body");
+
+    if (!post) {
+      document.getElementById("post-title").textContent = "Post not found";
+      body.innerHTML = '<p><a href="./#writing">Back to all writing</a></p>';
+    } else {
+      document.title = `${post.title} · Boyi Dai`;
+      document.getElementById("post-title").textContent = post.title;
+      document.getElementById("post-meta").textContent =
+        new Date(post.date + "T12:00").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+      fetch(`posts/${encodeURIComponent(slug)}.md`)
+        .then((r) => { if (!r.ok) throw new Error(r.status); return r.text(); })
+        .then((md) => { body.innerHTML = marked.parse(md); })
+        .catch(() => { body.innerHTML = "<p>This post could not be loaded.</p>"; });
+    }
+  </script>
+</body>
+</html>

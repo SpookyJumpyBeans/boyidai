@@ -238,6 +238,19 @@ a.xp-row:hover { background: var(--surface); }
 .prs .status { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
 .prs .status.merged { color: var(--accent); }
 .prs .status.open { color: var(--muted); }
+.posts { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.posts li { border-bottom: 1px solid var(--line); }
+.posts li.empty { border-right: 0; padding: 28px 0; background: none; }
+.posts a {
+  display: grid; grid-template-columns: 40px minmax(0, 1fr) auto 24px; gap: 24px; align-items: baseline;
+  padding: 24px 0; transition: background .15s;
+}
+.posts a:hover { background: var(--surface); }
+.posts a:hover .arrow { color: var(--text); }
+.posts .post-main { display: flex; flex-direction: column; gap: 6px; }
+.posts .title { font-size: 20px; font-weight: 500; letter-spacing: -0.02em; }
+.posts .summary { color: var(--muted); font-size: 15px; }
+.posts .n, .posts .date, .posts .arrow { font-family: var(--mono); font-size: 12px; color: var(--dim); transition: color .15s; }
 .prs .date, .prs .n, .prs .arrow { font-family: var(--mono); font-size: 12px; color: var(--dim); }
 
 /* -- about ---------------------------------------------------------------- */
@@ -325,7 +338,34 @@ a.xp-row:hover { background: var(--surface); }
   .xp-company { font-size: 20px; }
   .prs .n, .prs .date, .prs .arrow { display: none; }
   .prs .title { grid-column: 1 / -1; }
+  .posts a { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .posts .n, .posts .arrow { display: none; }
   .bento { grid-template-columns: 1fr; }
   .card-intro, .card-school, .card-side, .card-half { grid-column: auto; grid-row: auto; }
         .section { padding-top: 72px; }
 }
+
+/* -- writing: a single post ------------------------------------------------ */
+
+.post { max-width: 760px; padding-top: 72px; padding-bottom: 40px; }
+.post-meta { font-family: var(--mono); font-size: 12px; color: var(--dim); letter-spacing: .1em; text-transform: uppercase; margin: 0 0 20px; }
+.post-title { font-size: clamp(34px, 5vw, 56px); line-height: 1.05; letter-spacing: -0.04em; margin: 0 0 48px; }
+.prose { font-size: 17px; line-height: 1.75; color: #d0d0d0; }
+.prose > * + * { margin-top: 1.1em; }
+.prose p { margin: 0; }
+.prose h2, .prose h3 { color: var(--text); font-weight: 500; letter-spacing: -0.02em; line-height: 1.2; margin-top: 2em; }
+.prose h2 { font-size: 28px; }
+.prose h3 { font-size: 21px; }
+.prose a { color: var(--text); text-decoration: underline; text-decoration-color: var(--dim); text-underline-offset: 3px; }
+.prose a:hover { text-decoration-color: var(--text); }
+.prose code { font-family: var(--mono); font-size: .88em; background: var(--surface); border: 1px solid var(--line-2); border-radius: 3px; padding: 1px 5px; }
+.prose pre { background: var(--surface); border: 1px solid var(--line-2); border-radius: 6px; padding: 18px 20px; overflow-x: auto; }
+.prose pre code { background: none; border: 0; padding: 0; font-size: 14px; line-height: 1.6; }
+.prose blockquote { margin-left: 0; padding-left: 20px; border-left: 2px solid var(--line-2); color: var(--muted); }
+.prose img { border: 1px solid var(--line-2); border-radius: 6px; }
+.prose ul, .prose ol { padding-left: 1.3em; }
+.prose li + li { margin-top: .4em; }
+.prose hr { border: 0; border-top: 1px solid var(--line); margin: 2.4em 0; }
+.prose table { border-collapse: collapse; width: 100%; font-size: 15px; display: block; overflow-x: auto; }
+.prose th, .prose td { border-bottom: 1px solid var(--line); padding: 8px 12px; text-align: left; }
+.prose th { font-family: var(--mono); font-size: 12px; color: var(--muted); font-weight: 400; letter-spacing: .06em; text-transform: uppercase; }
