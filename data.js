@@ -161,6 +161,7 @@ window.PROJECTS = [
 ];
 
 window.CONTRIBUTIONS = [
+  { repo: "apache/solr", number: 5167, title: "Overseer collection lock leaks when marking an async task as running fails", status: "open", date: "2026-10-16" },
   { repo: "apache/solr", number: 5114, title: "CREATESNAPSHOT reports success when a shard has no active replica", status: "open", date: "2026-10-13" },
   { repo: "scipy/scipy", number: 26079, title: "Remove API reference links from the User Guide index", status: "merged", date: "2026-09-02" },
   { repo: "awslabs/palace", number: 891, title: "Fix validate-config script name in the docs", status: "merged", date: "2026-08-27" },
