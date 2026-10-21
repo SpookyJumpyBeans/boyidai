@@ -15,7 +15,7 @@ window.SITE = {
     "Hi, I'm Boyi Dai, a Computer Engineering student at the University of Virginia, minoring in statistics. I'm most interested in infrastructure, compilers, and the systems that make AI models run fast. My work has taken me across cloud cost alerting at Capital One, frontier-model evaluation for Oracle's public sector group, and leading engineering at TSG, where we ship MVPs for YC-backed founders. I like problems where speed and correctness are both on the line.",
     "Outside of software, you'll find me on the pickleball court, playing pickup basketball, at the piano, or producing beats that are, in my completely unbiased opinion, pretty sick. If you need a fourth for doubles or a second opinion on a hi-hat pattern, my inbox is open.",
   ],
-  statement: "Inference engines, compilers, query engines, and the cloud services around them.",
+  statement: "Fast and correct.",
   // Joined in app.js so the full address is not sitting in the source.
   email: { user: "fpm9tr", domain: "virginia", tld: "edu" },
   links: [
