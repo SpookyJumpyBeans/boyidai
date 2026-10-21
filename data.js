@@ -167,7 +167,8 @@ window.POSTS = [
 ];
 
 window.CONTRIBUTIONS = [
-  { repo: "apache/solr", number: 5186, title: "REINDEXCOLLECTION abort/failure can leave the source collection read-only", status: "open", date: "2026-10-19" },
+  { repo: "apache/solr", number: 5189, title: "Updates to a routed alias fail on a node whose cached aliases are stale", status: "open", date: "2026-10-21" },
+  { repo: "apache/solr", number: 5186, title: "REINDEXCOLLECTION abort/failure can leave the source collection read-only", status: "merged", date: "2026-10-19" },
   { repo: "apache/solr", number: 5167, title: "Overseer collection lock leaks when marking an async task as running fails", status: "open", date: "2026-10-16" },
   { repo: "apache/solr", number: 5114, title: "CREATESNAPSHOT reports success when a shard has no active replica", status: "open", date: "2026-10-13" },
   { repo: "scipy/scipy", number: 26079, title: "Remove API reference links from the User Guide index", status: "merged", date: "2026-09-02" },

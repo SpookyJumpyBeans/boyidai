@@ -252,6 +252,11 @@ a.xp-row:hover { background: var(--surface); }
 .posts .summary { color: var(--muted); font-size: 15px; }
 .posts .n, .posts .date, .posts .arrow { font-family: var(--mono); font-size: 12px; color: var(--dim); transition: color .15s; }
 .prs .date, .prs .n, .prs .arrow { font-family: var(--mono); font-size: 12px; color: var(--dim); }
+.pager { display: flex; justify-content: flex-end; align-items: center; gap: 16px; margin-top: 16px; font-family: var(--mono); font-size: 12px; color: var(--dim); }
+.pager:empty { display: none; }
+.pager button { font: inherit; color: var(--muted); background: none; border: 0; padding: 1px 4px; cursor: pointer; }
+.pager button:hover:not(:disabled) { color: var(--text); }
+.pager button:disabled { color: var(--dim); opacity: .4; cursor: default; }
 
 /* -- about ---------------------------------------------------------------- */
 

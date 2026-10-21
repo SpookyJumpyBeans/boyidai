@@ -214,14 +214,34 @@ renderGrid();
 
 // -- open source -------------------------------------------------------------
 
-$("prs").innerHTML = CONTRIBUTIONS.map((c, i) => `
+// Six per page; the pager only shows up once there's more than one page.
+const PRS_PER_PAGE = 6;
+const prPages = Math.ceil(CONTRIBUTIONS.length / PRS_PER_PAGE);
+let prPage = 0;
+
+function renderPrs() {
+  const first = prPage * PRS_PER_PAGE;
+  $("prs").innerHTML = CONTRIBUTIONS.slice(first, first + PRS_PER_PAGE).map((c, i) => `
   <li><a href="https://github.com/${c.repo}/pull/${c.number}" target="_blank" rel="noopener">
-    <span class="n">${pad(i + 1)}</span>
+    <span class="n">${pad(first + i + 1)}</span>
     <span class="repo">${esc(c.repo)} #${c.number}</span>
     <span class="title">${esc(c.title)}</span>
     <span class="status ${c.status}">${c.status}</span>
     <span class="date">${new Date(c.date + "T12:00").toLocaleDateString("en-US", { month: "short", year: "numeric" })}</span>
     <span class="arrow">↗</span></a></li>`).join("");
+  $("prs-pager").innerHTML = prPages > 1 ? `
+    <button data-step="-1" ${prPage === 0 ? "disabled" : ""}>← Prev</button>
+    <span>${pad(prPage + 1)} / ${pad(prPages)}</span>
+    <button data-step="1" ${prPage === prPages - 1 ? "disabled" : ""}>Next →</button>` : "";
+}
+
+$("prs-pager").addEventListener("click", (e) => {
+  const b = e.target.closest("button[data-step]");
+  if (!b || b.disabled) return;
+  prPage += Number(b.dataset.step);
+  renderPrs();
+});
+renderPrs();
 
 // -- writing -----------------------------------------------------------------
 
