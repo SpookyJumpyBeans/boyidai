@@ -45,6 +45,10 @@ img { display: block; max-width: 100%; }
 /* -- hero ----------------------------------------------------------------- */
 
 .hero-shell { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+.hero-geo {
+  position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none;
+  animation: fade 2.4s ease .4s both;
+}
 .hero-dots {
   position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none;
   -webkit-mask-image: radial-gradient(120% 90% at 50% 30%, #000 40%, transparent 100%);
@@ -72,7 +76,7 @@ h1 .w { display: inline-block; opacity: 0; transform: translateY(.35em); filter:
 .hero-actions, .now { animation: fade 1s ease .7s both; }
 @keyframes fade { from { opacity: 0; transform: translateY(8px); } }
 @media (prefers-reduced-motion: reduce) {
-  h1 .w, .hero-name, .hero-actions, .now { animation: none; opacity: 1; transform: none; filter: none; }
+  h1 .w, .hero-name, .hero-actions, .now, .hero-geo { animation: none; opacity: 1; transform: none; filter: none; }
   .kicker::before { animation: none; }
 }
 .hero-name {
@@ -274,16 +278,32 @@ a.xp-row:hover { background: var(--surface); }
 .card h4 { font-family: var(--mono); font-size: 11px; font-weight: 400; color: var(--dim); letter-spacing: .12em; text-transform: uppercase; margin: 0 0 18px; }
 .card p { margin: 0 0 14px; color: #c9c9c9; }
 .card p:last-child { margin-bottom: 0; }
-.card-intro { grid-column: span 4; grid-row: span 2; display: flex; flex-direction: column; }
-.card-intro .statement { font-size: clamp(28px, 3.4vw, 46px); font-weight: 500; letter-spacing: -0.035em; line-height: 1.08; color: var(--text); margin: 0; padding-bottom: 40px; }
+.card-intro { grid-column: span 4; grid-row: span 2; display: flex; flex-direction: column; padding-bottom: 44px; }
+.card-intro .statement { font-size: clamp(28px, 3.4vw, 46px); font-weight: 500; letter-spacing: -0.035em; line-height: 1.08; color: var(--text); margin: 0; padding-bottom: 32px; }
+/* Keep each phrase of the title on one line ("Systems engineer." never splits). */
+.card-intro .statement .phrase { color: inherit; white-space: nowrap; display: block; width: fit-content; }
 .card-intro .statement span { color: var(--dim); }
-.card-intro .bio { max-width: 640px; font-size: 15px; line-height: 1.65; }
+.card-intro .bio { max-width: 680px; font-size: 17px; line-height: 1.65; }
+.card-intro .bio strong { color: var(--text); font-weight: 600; }
 .card-school, .card-side { grid-column: span 2; }
 .card-half { grid-column: span 3; }
 .card-school { display: flex; flex-direction: column; }
 .card .class-of { font-size: 18px; font-weight: 500; letter-spacing: -0.01em; line-height: 1.2; color: var(--text); margin: 0; padding-top: 22px; }
 .card .school-name { font-size: clamp(30px, 3vw, 42px); font-weight: 500; letter-spacing: -0.035em; line-height: 1.05; color: var(--text); margin-bottom: 12px; }
 .card .sub { color: var(--muted); font-size: 14px; }
+/* Piano and reading share the last row, half and half: a picture beside its details. */
+.card-piano, .card-reading { grid-column: span 3; display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 26px; align-items: stretch; }
+.piano-score, .reading-cover { display: block; align-self: start; aspect-ratio: 1400 / 1872; border-radius: 4px; overflow: hidden; background: #e9e7e1; }
+.piano-score img, .reading-cover img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(1) contrast(1.05); transition: transform .4s; }
+.piano-score:hover img, .reading-cover:hover img { transform: scale(1.02); }
+.reading-cover { background: none; box-shadow: 0 0 0 1px var(--line-2); }
+.reading-cover img { filter: none; }
+.piano-info, .reading-info { display: flex; flex-direction: column; }
+.card .piano-piece, .card .reading-title { font-size: clamp(26px, 2.4vw, 34px); font-weight: 500; letter-spacing: -0.035em; line-height: 1.05; color: var(--text); margin-bottom: 10px; }
+.card .piano-composer, .card .reading-author { font-size: 18px; font-weight: 500; letter-spacing: -0.01em; color: var(--text); margin: 18px 0 4px; }
+.card .piano-tempo { font-family: var(--mono); font-size: 12px; color: var(--dim); }
+.piano-credit, .reading-note { margin-top: auto; padding-top: 22px; font-family: var(--mono); font-size: 11px; color: var(--dim); transition: color .15s; }
+.piano-credit:hover { color: var(--text); }
 .progress { margin-top: 22px; }
 .progress-bar { height: 4px; background: var(--line-2); border-radius: 2px; overflow: hidden; }
 .progress-bar i { display: block; height: 100%; background: var(--text); width: 0; transition: width 1.4s cubic-bezier(.2, .7, .2, 1) .2s; }
@@ -346,7 +366,9 @@ a.xp-row:hover { background: var(--surface); }
   .posts a { grid-template-columns: minmax(0, 1fr); gap: 8px; }
   .posts .n, .posts .arrow { display: none; }
   .bento { grid-template-columns: 1fr; }
-  .card-intro, .card-school, .card-side, .card-half { grid-column: auto; grid-row: auto; }
+  .card-intro, .card-school, .card-side, .card-half, .card-piano, .card-reading { grid-column: auto; grid-row: auto; }
+  .card-piano, .card-reading { grid-template-columns: 1fr; gap: 20px; }
+  .piano-score, .reading-cover { max-width: 260px; }
         .section { padding-top: 72px; }
 }
 

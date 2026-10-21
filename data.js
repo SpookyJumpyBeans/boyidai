@@ -13,9 +13,28 @@ window.SITE = {
   headline: ["Infrastructure, systems,", "and the layer underneath."],
   bio: [
     "Hi, I'm Boyi Dai, a Computer Engineering student at the University of Virginia, minoring in statistics. I'm most interested in infrastructure, compilers, and the systems that make AI models run fast. My work has taken me across cloud cost alerting at Capital One, frontier-model evaluation for Oracle's public sector group, and leading engineering at TSG, where we ship MVPs for YC-backed founders. I like problems where speed and correctness are both on the line.",
-    "Outside of software, you'll find me on the pickleball court, playing pickup basketball, at the piano, or producing beats that are, in my completely unbiased opinion, pretty sick. If you need a fourth for doubles or a second opinion on a hi-hat pattern, my inbox is open.",
+    "Outside of software, you'll find me on the pickleball court, playing pickup basketball, at the piano, diving into a good book, or producing beats that are, in my completely unbiased opinion, pretty sick. If you need a fourth for doubles or a second opinion on a hi-hat pattern, my inbox is open.",
   ],
   statement: "First-gen student. Systems engineer. Perpetually curious.",
+  // The book in progress, shown beside the piano card in About.
+  reading: {
+    title: "Mount Analogue",
+    author: "René Daumal",
+    note: "An unfinished novel about climbing a mountain no one can see.",
+    cover: "assets/mount-analogue.jpg",
+    link: "https://openlibrary.org/works/OL7967469W",
+  },
+  // The piece on the piano right now, shown as its own card in About.
+  practicing: {
+    piece: "Étude Op. 10, No. 1",
+    detail: "in C major · “Waterfall”",
+    composer: "Frédéric Chopin",
+    tempo: "Allegro · ♩ = 176",
+    image: "assets/chopin-op10-no1.jpg",
+    imageAlt: "First page of Chopin's Étude Op. 10, No. 1 from an 1870s Paris edition",
+    credit: "Paris edition, c. 1875–79 · Bibliothèque nationale de France",
+    creditUrl: "https://commons.wikimedia.org/wiki/File:Nouvelle_%C3%A9dition_revue_et_corrig%C3%A9e_des_oeuvres_compl%C3%A8tes_de_F._Chopin._,_%C3%89tudes_-_F._Chopin_-_btv1b100720227_(02_of_43).jpg",
+  },
   // Joined in app.js so the full address is not sitting in the source.
   email: { user: "fpm9tr", domain: "virginia", tld: "edu" },
   links: [

@@ -79,6 +79,94 @@ $("nav-links").innerHTML = SITE.links.map((l) => `<a class="keep" href="${l.href
   shell.addEventListener("pointerleave", () => { px = py = -1e4; request(); });
 })();
 
+// -- hero geometry -----------------------------------------------------------
+
+// An armillary sphere: great circles whose axes fan out around a cone, turning
+// slowly in 3D. Rings on the far side fade, so it reads as depth, not noise.
+(() => {
+  const canvas = $("geo");
+  const ctx = canvas.getContext("2d");
+  const RINGS = 16, STEPS = 120, TILT = 1.05;
+  // Each ring is a unit circle in the plane perpendicular to its axis.
+  const rings = Array.from({ length: RINGS }, (_, i) => {
+    const t = (i / RINGS) * Math.PI * 2;
+    const n = [Math.sin(TILT) * Math.cos(t), Math.cos(TILT), Math.sin(TILT) * Math.sin(t)];
+    const a = Math.abs(n[1]) < 0.9 ? [0, 1, 0] : [1, 0, 0];
+    let u = [n[1] * a[2] - n[2] * a[1], n[2] * a[0] - n[0] * a[2], n[0] * a[1] - n[1] * a[0]];
+    const ul = Math.hypot(...u); u = u.map((x) => x / ul);
+    const v = [n[1] * u[2] - n[2] * u[1], n[2] * u[0] - n[0] * u[2], n[0] * u[1] - n[1] * u[0]];
+    return Array.from({ length: STEPS + 1 }, (_, k) => {
+      const p = (k / STEPS) * Math.PI * 2, c = Math.cos(p), s = Math.sin(p);
+      return [u[0] * c + v[0] * s, u[1] * c + v[1] * s, u[2] * c + v[2] * s];
+    });
+  });
+
+  let w = 0, h = 0, tiltX = 0, tiltY = 0, targetX = 0, targetY = 0, last = 0, angle = 0, running = false;
+
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    const wide = w > 900;
+    const cx = wide ? w * 0.64 : w * 0.5, cy = h * (wide ? 0.5 : 0.42);
+    const R = Math.min(w, h) * (wide ? 0.4 : 0.36), cam = 3.2;
+    const ay = angle + tiltY, ax = 0.42 + tiltX;
+    const cY = Math.cos(ay), sY = Math.sin(ay), cX = Math.cos(ax), sX = Math.sin(ax);
+    ctx.lineWidth = 1;
+    for (const ring of rings) {
+      let prev = null;
+      for (const [x, y, z] of ring) {
+        const x1 = x * cY + z * sY, z1 = -x * sY + z * cY;
+        const y2 = y * cX - z1 * sX, z2 = y * sX + z1 * cX;
+        const f = cam / (cam - z2);
+        const pt = [cx + x1 * R * f, cy + y2 * R * f, z2];
+        if (prev) {
+          const depth = (prev[2] + pt[2] + 2) / 4; // 0 = far side, 1 = near side
+          ctx.strokeStyle = `rgba(237, 237, 237, ${(0.025 + 0.16 * depth * depth).toFixed(3)})`;
+          ctx.beginPath(); ctx.moveTo(prev[0], prev[1]); ctx.lineTo(pt[0], pt[1]); ctx.stroke();
+        }
+        prev = pt;
+      }
+    }
+  }
+
+  function frame(now) {
+    if (!running) return;
+    const dt = last ? Math.min(now - last, 64) : 16;
+    last = now;
+    angle += dt * 0.00009;
+    tiltX += (targetX - tiltX) * 0.04; tiltY += (targetY - tiltY) * 0.04;
+    draw();
+    requestAnimationFrame(frame);
+  }
+  const start = () => { if (!running && !reducedMotion) { running = true; last = 0; requestAnimationFrame(frame); } };
+  const stop = () => { running = false; };
+
+  function resize() {
+    const r = canvas.getBoundingClientRect(), dpr = devicePixelRatio || 1;
+    w = r.width; h = r.height;
+    canvas.width = w * dpr; canvas.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    draw();
+  }
+  addEventListener("resize", resize);
+  resize();
+  if (reducedMotion) return;
+
+  // Only animate while the hero is on screen and the tab is visible.
+  let visible = true;
+  new IntersectionObserver(([e]) => { visible = e.isIntersecting; visible && !document.hidden ? start() : stop(); }).observe(canvas);
+  document.addEventListener("visibilitychange", () => (visible && !document.hidden ? start() : stop()));
+  if (matchMedia("(pointer: fine)").matches) {
+    const shell = canvas.parentElement;
+    shell.addEventListener("pointermove", (e) => {
+      const r = canvas.getBoundingClientRect();
+      targetY = ((e.clientX - r.left) / r.width - 0.5) * 0.5;
+      targetX = ((e.clientY - r.top) / r.height - 0.5) * 0.3;
+    });
+    shell.addEventListener("pointerleave", () => { targetX = targetY = 0; });
+  }
+  start();
+})();
+
 // -- the current-signal card -------------------------------------------------
 
 let signalIndex = 0;
@@ -269,8 +357,8 @@ const rows = (xs) => `<ol class="rows">${xs.map((x, i) => `<li><span class="n">$
 $("about-body").innerHTML = `
   <div class="card card-intro reveal">
     <h4>About</h4>
-    <p class="statement">${esc(SITE.statement)}</p>
-    <div class="bio">${SITE.bio.map((b) => `<p>${esc(b)}</p>`).join("")}</div>
+    <p class="statement">${SITE.statement.split(/(?<=\.)\s+/).map((p) => `<span class="phrase">${esc(p)}</span>`).join(" ")}</p>
+    <div class="bio">${SITE.bio.map((b) => `<p>${esc(b).replace(/^Hi, I'm [^,]+/, (m) => `<strong>${m}</strong>`)}</p>`).join("")}</div>
   </div>
   <div class="card card-school reveal">
     <h4>Education</h4>
@@ -291,7 +379,44 @@ $("about-body").innerHTML = `
   </div>
   <div class="card card-half reveal">
     <h4>Coursework</h4>${chips(SITE.coursework)}
-  </div>`;
+  </div>
+  <div class="card card-piano reveal">
+    <a class="piano-score" href="${SITE.practicing.image}" target="_blank" rel="noopener">
+      <img src="${SITE.practicing.image}" alt="${esc(SITE.practicing.imageAlt)}" loading="lazy">
+    </a>
+    <div class="piano-info">
+      <h4>Currently practicing</h4>
+      <p class="piano-piece">${esc(SITE.practicing.piece)}</p>
+      <p class="sub">${esc(SITE.practicing.detail)}</p>
+      <p class="piano-composer">${esc(SITE.practicing.composer)}</p>
+      <p class="piano-tempo">${esc(SITE.practicing.tempo)}</p>
+      <a class="piano-credit" href="${SITE.practicing.creditUrl}" target="_blank" rel="noopener">${esc(SITE.practicing.credit)} ↗</a>
+    </div>
+  </div>${SITE.reading ? `
+  <div class="card card-reading reveal">
+    ${SITE.reading.cover ? `<a class="reading-cover" href="${SITE.reading.link || SITE.reading.cover}" target="_blank" rel="noopener">
+      <img src="${SITE.reading.cover}" alt="Cover of ${esc(SITE.reading.title)}" loading="lazy">
+    </a>` : ""}
+    <div class="reading-info">
+      <h4>Currently reading</h4>
+      <p class="reading-title">${esc(SITE.reading.title)}</p>
+      <p class="reading-author">${esc(SITE.reading.author)}</p>
+      ${SITE.reading.note ? `<p class="sub">${esc(SITE.reading.note)}</p>` : ""}
+    </div>
+  </div>` : ""}`;
+
+// Size the About title so its longest line spans the card, one phrase per line.
+const statement = document.querySelector(".card-intro .statement");
+function fitStatement() {
+  statement.style.fontSize = "";
+  const base = parseFloat(getComputedStyle(statement).fontSize);
+  const widest = Math.max(...[...statement.querySelectorAll(".phrase")].map((p) => p.scrollWidth));
+  const size = Math.min(base * (statement.clientWidth / widest), 60);
+  statement.style.fontSize = `${size.toFixed(1)}px`;
+}
+fitStatement();
+document.fonts?.ready.then(fitStatement);
+addEventListener("resize", fitStatement);
 
 // A soft light that follows the pointer across each card.
 document.querySelectorAll(".card").forEach((card) => card.addEventListener("pointermove", (e) => {
