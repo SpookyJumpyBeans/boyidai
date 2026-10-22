@@ -51,7 +51,7 @@ window.SITE = {
 // The rotating card in the hero: what is true right now.
 window.SIGNAL = [
   { label: "Now", title: "TSG", line: "Director of Technology, since Aug 2026" },
-  { label: "Building", title: "nanocompile", line: "Tensor compiler for nanoinfer · phase 3 of 8", progress: 3 / 8 },
+  { label: "Building", title: "nanocompile", line: "Tensor compiler for nanoinfer · phase 4 of 8", progress: 4 / 8 },
   { label: "Recently", title: "Capital One", line: "Software Engineering Intern · Richmond, VA" },
 ];
 
@@ -143,10 +143,10 @@ window.CASE_STUDIES = [
       { value: "0", label: "Logit difference vs nanoinfer (bitwise)" },
       { value: "62 → 13", label: "Kernels per transformer block" },
       { value: "17× → 1×", label: "Times each cached token is moved per step" },
-      { value: "3 / 8", label: "Phases done" },
+      { value: "4 / 8", label: "Phases done" },
     ],
     problem: "nanoinfer's kernels are written and tuned by hand. How close does a small compiler get to them, and where can it beat them?",
-    built: "A graph IR with symbolic shapes and a NumPy reference interpreter; a loop IR that emits C through gcc, with buffers planned by liveness; and kernel fusion that is bitwise identical to the unfused code. Next: AVX2 schedules, autotuning and INT8.",
+    built: "A graph IR with symbolic shapes and a NumPy reference interpreter; a loop IR that emits C through gcc, with buffers planned by liveness; kernel fusion that is bitwise identical to the unfused code; and schedules (tiling, AVX2 vectorization, a persistent thread pool) that make it 3.1× faster and put the matmul at the roofline, 199 of 200.5 GFLOP/s. Next: autotuning, INT8 and whole-model compilation.",
     stack: ["Python", "C", "gcc", "AVX2"],
     image: "assets/nanocompile.jpg",
     caption: "Code nanocompile generated: rms_norm, fused into one kernel.",
