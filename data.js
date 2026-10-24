@@ -56,6 +56,9 @@ window.SIGNAL = [
 ];
 
 window.EXPERIENCE = [
+  { company: "UVA Research", logo: { src: "assets/logo-uva-research.png", bg: "#fff" }, role: "Undergraduate Researcher",
+    detail: "Fixing fault-tolerance bugs in Apache Solr's cluster coordination: 6 PRs upstreamed, 2 merged",
+    dates: "Sep 2026 to Present", place: "Charlottesville, VA", href: "#open-source" },
   { company: "Capital One", logo: { src: "assets/logo-capital-one.svg", bg: "#fff", fit: "wide" }, role: "Software Engineering Intern", detail: "Cloud cost alerting API in Go on AWS",
     dates: "Jun 2026 to Aug 2026", place: "Richmond, VA", href: "#case-capital-one" },
   { company: "Oracle", logo: { icon: "oracle", color: "#c74634" }, role: "Analyst, Public Sector AI Strategy · Contract",
