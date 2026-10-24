@@ -186,6 +186,7 @@ window.POSTS = [
 ];
 
 window.CONTRIBUTIONS = [
+  { repo: "apache/solr", number: 5223, title: "A failed RESTORE to a new collection leaves its shards unusable on retry", status: "open", date: "2026-10-24" },
   { repo: "apache/solr", number: 5191, title: "Fixing a time routed alias's date math start can remove another alias", status: "open", date: "2026-10-21" },
   { repo: "apache/solr", number: 5189, title: "Updates to a routed alias fail on a node whose cached aliases are stale", status: "open", date: "2026-10-21" },
   { repo: "apache/solr", number: 5186, title: "REINDEXCOLLECTION abort/failure can leave the source collection read-only", status: "merged", date: "2026-10-19" },
