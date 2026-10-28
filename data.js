@@ -57,7 +57,7 @@ window.SIGNAL = [
 
 window.EXPERIENCE = [
   { company: "UVA Research", logo: { src: "assets/logo-uva-research.png", bg: "#fff", fit: "full" }, role: "Undergraduate Researcher",
-    detail: "Fixing fault-tolerance bugs in Apache Solr's cluster coordination: 6 PRs upstreamed, 2 merged",
+    detail: "Fixing fault-tolerance bugs in Apache Solr's cluster coordination: 7 PRs upstreamed, 2 merged",
     dates: "Sep 2026 to Present", place: "Charlottesville, VA", href: "#open-source" },
   { company: "Capital One", logo: { src: "assets/logo-capital-one.svg", bg: "#fff", fit: "wide" }, role: "Software Engineering Intern", detail: "Cloud cost alerting API in Go on AWS",
     dates: "Jun 2026 to Aug 2026", place: "Richmond, VA", href: "#case-capital-one" },
@@ -189,6 +189,7 @@ window.POSTS = [
 ];
 
 window.CONTRIBUTIONS = [
+  { repo: "apache/solr", number: 5253, title: "A failed MIGRATE leaves the target leader buffering updates", status: "open", date: "2026-10-28" },
   { repo: "apache/solr", number: 5223, title: "A failed RESTORE to a new collection leaves its shards unusable on retry", status: "open", date: "2026-10-24" },
   { repo: "apache/solr", number: 5191, title: "Fixing a time routed alias's date math start can remove another alias", status: "open", date: "2026-10-21" },
   { repo: "apache/solr", number: 5189, title: "Updates to a routed alias fail on a node whose cached aliases are stale", status: "open", date: "2026-10-21" },
