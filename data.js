@@ -57,7 +57,7 @@ window.SIGNAL = [
 
 window.EXPERIENCE = [
   { company: "UVA Research", logo: { src: "assets/logo-uva-research.png", bg: "#fff", fit: "full" }, role: "Undergraduate Researcher",
-    detail: "Fixing fault-tolerance bugs in Apache Solr's cluster coordination: 7 PRs upstreamed, 2 merged",
+    detail: "Fixing fault-tolerance bugs in Apache Solr's cluster coordination: 7 PRs upstreamed, 3 merged",
     dates: "Sep 2026 to Present", place: "Charlottesville, VA", href: "#open-source" },
   { company: "Capital One", logo: { src: "assets/logo-capital-one.svg", bg: "#fff", fit: "wide" }, role: "Software Engineering Intern", detail: "Cloud cost alerting API in Go on AWS",
     dates: "Jun 2026 to Aug 2026", place: "Richmond, VA", href: "#case-capital-one" },
@@ -194,7 +194,7 @@ window.CONTRIBUTIONS = [
   { repo: "apache/solr", number: 5191, title: "Fixing a time routed alias's date math start can remove another alias", status: "open", date: "2026-10-21" },
   { repo: "apache/solr", number: 5189, title: "Updates to a routed alias fail on a node whose cached aliases are stale", status: "open", date: "2026-10-21" },
   { repo: "apache/solr", number: 5186, title: "REINDEXCOLLECTION abort/failure can leave the source collection read-only", status: "merged", date: "2026-10-19" },
-  { repo: "apache/solr", number: 5167, title: "Overseer collection lock leaks when marking an async task as running fails", status: "open", date: "2026-10-16" },
+  { repo: "apache/solr", number: 5167, title: "Overseer collection lock leaks when marking an async task as running fails", status: "merged", date: "2026-10-16" },
   { repo: "apache/solr", number: 5114, title: "CREATESNAPSHOT reports success when a shard has no active replica", status: "merged", date: "2026-10-13" },
   { repo: "scipy/scipy", number: 26079, title: "Remove API reference links from the User Guide index", status: "merged", date: "2026-09-02" },
   { repo: "awslabs/palace", number: 891, title: "Fix validate-config script name in the docs", status: "merged", date: "2026-08-27" },
