@@ -57,7 +57,7 @@ window.SIGNAL = [
 
 window.EXPERIENCE = [
   { company: "UVA Research", logo: { src: "assets/logo-uva-research.png", bg: "#fff", fit: "full" }, role: "Undergraduate Researcher",
-    detail: "Fixing fault-tolerance bugs in Apache Solr and ZooKeeper cluster coordination: 9 PRs upstreamed, 4 merged",
+    detail: "Fixing fault-tolerance bugs in Apache Solr, ZooKeeper and HBase cluster coordination: 14 PRs upstreamed, 5 merged",
     dates: "Sep 2026 to Present", place: "Charlottesville, VA", href: "#open-source" },
   { company: "Capital One", logo: { src: "assets/logo-capital-one.svg", bg: "#fff", fit: "wide" }, role: "Software Engineering Intern", detail: "Cloud cost alerting API in Go on AWS",
     dates: "Jun 2026 to Aug 2026", place: "Richmond, VA", href: "#case-capital-one" },
@@ -189,12 +189,17 @@ window.POSTS = [
 ];
 
 window.CONTRIBUTIONS = [
+  { repo: "apache/hbase", number: 8938, title: "Removing an RSGroup can race with creating a namespace that uses it", status: "open", date: "2026-11-26" },
+  { repo: "apache/hbase", number: 8921, title: "Backup repair does not release an exclusive lock taken by an operation that never recorded itself", status: "open", date: "2026-11-21" },
+  { repo: "apache/hbase", number: 8898, title: "Master active time can go backwards after a failover to a master whose clock is behind", status: "open", date: "2026-11-16" },
+  { repo: "apache/zookeeper", number: 2508, title: "Recipe tests that extend ClientBase are silently skipped", status: "open", date: "2026-11-14" },
+  { repo: "apache/zookeeper", number: 2506, title: "LeaderElectionSupport fails on a withdrawn offer and leaves its own offer behind", status: "open", date: "2026-11-13" },
   { repo: "apache/zookeeper", number: 2504, title: "Container cleanup can delete a node that was created at the same path after the container was picked", status: "open", date: "2026-11-12" },
   { repo: "apache/zookeeper", number: 2488, title: "setquota can leave a quota half created, which its own retry can't fix and which isn't enforced", status: "open", date: "2026-11-02" },
   { repo: "apache/solr", number: 5253, title: "A failed MIGRATE leaves the target leader buffering updates", status: "open", date: "2026-10-28" },
   { repo: "apache/solr", number: 5223, title: "A failed RESTORE to a new collection leaves its shards unusable on retry", status: "open", date: "2026-10-24" },
   { repo: "apache/solr", number: 5191, title: "Fixing a time routed alias's date math start can remove another alias", status: "merged", date: "2026-10-21" },
-  { repo: "apache/solr", number: 5189, title: "Updates to a routed alias fail on a node whose cached aliases are stale", status: "open", date: "2026-10-21" },
+  { repo: "apache/solr", number: 5189, title: "Updates to a routed alias fail on a node whose cached aliases are stale", status: "merged", date: "2026-10-21" },
   { repo: "apache/solr", number: 5186, title: "REINDEXCOLLECTION abort/failure can leave the source collection read-only", status: "merged", date: "2026-10-19" },
   { repo: "apache/solr", number: 5167, title: "Overseer collection lock leaks when marking an async task as running fails", status: "merged", date: "2026-10-16" },
   { repo: "apache/solr", number: 5114, title: "CREATESNAPSHOT reports success when a shard has no active replica", status: "merged", date: "2026-10-13" },
